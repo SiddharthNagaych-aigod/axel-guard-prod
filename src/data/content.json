@@ -1,0 +1,1337 @@
+{
+  "site_info": {
+    "title": "AxelGuard",
+    "description": "Leaders in the field of vehicle safety systems and customized solutions.",
+    "contact": {
+      "address": "Office No 210, Second Floor, PC Chamber Sector 66, Noida, Uttar Pradesh - 201301",
+      "phone": "+91 87553 11835",
+      "email": "info@axel-guard.com"
+    },
+    "socials": {
+      "twitter": "",
+      "facebook": "",
+      "instagram": "",
+      "linkedin": ""
+    }
+  },
+  "brand": {
+    "colors": {
+      "heading": "#1e4356",
+      "accent": "#68a4c4",
+      "background": "#ffffff",
+      "surface": "#ffffff",
+      "default_text": "#555555"
+    },
+    "fonts": {
+      "default": "Roboto",
+      "heading": "Raleway",
+      "nav": "Poppins"
+    }
+  },
+  "missions": [
+    "Delivering innovative and robust vehicle safety systems to protect lives on the road.",
+    "Ensuring top-notch quality control and compliance with industry standards.",
+    "Committed to long-term customer satisfaction through unparalleled support.",
+    "Constantly evolving with the latest technologies to meet emerging safety needs.",
+    "Partnering with leading companies to provide comprehensive, customized solutions.",
+    "Focused on sustainability and ethical practices in all aspects of our operations."
+  ],
+  "services": [
+    {
+      "title": "Mobile DVR",
+      "icon": "bi-activity",
+      "description": "Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.",
+      "link": "service-details.html"
+    },
+    {
+      "title": "DashCam",
+      "icon": "bi-broadcast",
+      "description": "Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.",
+      "link": "service-details.html"
+    },
+    {
+      "title": "RFID",
+      "icon": "bi-easel",
+      "description": "Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.",
+      "link": "service-details.html"
+    },
+    {
+      "title": "Camera",
+      "icon": "bi-bounding-box-circles",
+      "description": "Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.",
+      "link": "service-details.html"
+    }
+  ],
+  "why_choose_us": [
+    {
+      "title": "Premium Quality Products",
+      "description": "While others focus on low-cost alternatives, we prioritize delivering only the highest quality solutions."
+    },
+    {
+      "title": "Customized Solutions for Every Customer",
+      "description": "Your needs are unique, and we offer tailored solutions to ensure they are fully met."
+    },
+    {
+      "title": "Unwavering Customer Support",
+      "description": "We are committed to resolving any issue promptly, ensuring you never face a challenge alone."
+    },
+    {
+      "title": "Data Security",
+      "description": "With servers located in India, your data is safeguarded, eliminating concerns about international data breaches."
+    },
+    {
+      "title": "Customer-Centric Approach",
+      "description": "Every customer matters to us, and we go the extra mile to ensure satisfaction with personalized attention."
+    }
+  ],
+  "clients": [
+    "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160172/axelguard/img/clients/client-1.png",
+    "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160173/axelguard/img/clients/client-2.png",
+    "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160174/axelguard/img/clients/client-3.png",
+    "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160175/axelguard/img/clients/client-4.png",
+    "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160176/axelguard/img/clients/client-5.png",
+    "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160185/axelguard/img/clients/client-6.png",
+    "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160188/axelguard/img/clients/client-7.png",
+    "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160190/axelguard/img/clients/client-8.png"
+  ],
+  "products": [
+    {
+      "product_code": "AXG01",
+      "product_type": "Basic version MDVR",
+      "product_name": "4ch 1080p SD Card MDVR (MR9504EC)",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159846/axelguard/img/AXG01/Basic%20Sd%20card%20MDVR.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159848/axelguard/img/AXG01/Basic%20Sd%20card%20MDVR1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159842/axelguard/img/AXG01/Basic%20SD%20card%20MDVR2.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159844/axelguard/img/AXG01/Basic%20SD%20card%20MDVR3.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159845/axelguard/img/AXG01/Basic%20SD%20card%20MDVR4.webp"
+      ],
+      "features": [
+        "Built-in high performance SigmaStar Image chipsets",
+        "H.265/H.264 standard, high compression rate and image quality",
+        "4 CH 1080P live preview and storage",
+        "Support UPS power input",
+        "Unique GPS drift suppression algorithm"
+      ],
+      "technical_features": [
+        "Professional vehicle power supply 9-36V DC wide voltage, special file management system to encrypt and protect the data",
+        "Built-in super capacitor, avoid data loss and SD card damage caused by sudden outage",
+        "Support GPS/BD optional, high sensitivity, fast positioning",
+        "Operating system Embedded Linux OS"
+      ],
+      "pdf_manual": "assets/img/AXG01/Basic, 4CH SD 1080P Mobile DVR MR9504EC.pdf"
+    },
+    {
+      "product_code": "AXG02",
+      "product_type": "Basic version MDVR",
+      "product_name": "4ch 1080p HDD MDVR (MR9704C)",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159849/axelguard/img/AXG02/Basic%20HDD.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159850/axelguard/img/AXG02/Basic%20HDD1.png"
+      ],
+      "features": [
+        "Built-in high-performance chipsets, coded with H.265 standard.",
+        "Supports AHD, TVI, CVI, IPC, and Analog formats.",
+        "4+1 channels for live preview and storage.",
+        "1CH synchronized AV output, 1CH VGA output.",
+        "Built-in G-sensor for monitoring driving habits.",
+        "Allows for horizontal and vertical camera image adjustment for reverse assistance."
+      ],
+      "technical_features": [
+        "Operating system Embedded Linux OS",
+        "GUI interface, supports mouse and remote control",
+        "Two-layer password protection (Admin/User)",
+        "Video compression H.265",
+        "Image resolution 1080P/720P/960H/D1/CIF",
+        "Recording modes Manual and Alarm",
+        "AV input 4CH 4-pin aviation + 1CH 6-pin aviation for IPC",
+        "AV output 1CH VGA, 1CH aviation AV output",
+        "USB 1 USB 2.0 (supports U disk/mouse)",
+        "Ethernet 1 x 6-pin aviation to RJ45 (10M/100M)",
+        "Additional ports UART, ignition input, disaster recovery, debug port",
+        "Dimensions 162mm x 153mm x 52mm"
+      ],
+      "pdf_manual": "assets/img/AXG02/4g, 4CH 1080P H265 HDD Mobile DVR (MR9704E) (1).pdf"
+    },
+    {
+      "product_code": "AXG03",
+      "product_type": "Basic version MDVR",
+      "product_name": "4ch 1080p SD, 4G, GPS MDVR (MR9504E)",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159852/axelguard/img/AXG03/SD%20Card%20MDVR%205ch.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159858/axelguard/img/AXG03/SD%20Card%20MDVR%205ch1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159860/axelguard/img/AXG03/SD%20Card%20MDVR%205ch2.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159862/axelguard/img/AXG03/SD%20card%20MDVR%205ch3.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159863/axelguard/img/AXG03/sd%20card%20MDVR%205ch4.png"
+      ],
+      "features": [
+        "Built-in high-performance chipsets",
+        "Supports AHD TVI CVI IPC ANALOG",
+        "1CH AV output 1CH VGA output",
+        "Operates on 8-36V DC with multiple protection circuits",
+        "Monitors driving habits with built-in G-Sensor",
+        "Supports SD cards up to 512GB with built-in super capacitor to prevent data loss",
+        "Optional GPS BD GLONASS WiFi and 3G/4G transmission",
+        "Embedded Linux with GUI interface",
+        "Supports 1080P 720P 960H D1 CIF resolution",
+        "Recording modes Automatic or Alarm with 4CH local playback",
+        "4 AV inputs 1 USB 2.0 1 SDXC slot and more"
+      ],
+      "technical_features": [
+        "Operating system Embedded Linux OS",
+        "Supports PAL NTSC video standards",
+        "Compression formats H.264 H264+ H265 H265+",
+        "Playback quality 1080P 720P 960H D1 CIF",
+        "Audio compression G711A G711 G726 MG726 ADPCM IMA",
+        "Decoding ability 4CH 1080P",
+        "Ethernet 1 x 6-pin aviation to RJ45 10M/100M",
+        "Storage size 1080P 1G per hour per channel 720P 0.5G per hour per channel 960H 0.38G per hour per channel"
+      ],
+      "pdf_manual": "assets/img/AXG03/4g, 1080 SD, GPS Mobile DVR (MR9504E).pdf"
+    },
+    {
+      "product_code": "AXG04",
+      "product_type": "Basic version MDVR",
+      "product_name": "4ch 1080p HDD, 4G, GPS MDVR (MR9704E)",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159864/axelguard/img/AXG04/HDD%20MDVR%204G.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159865/axelguard/img/AXG04/HDD%20MDVR%204G1.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159867/axelguard/img/AXG04/HDD%20MDVR%204G2.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159868/axelguard/img/AXG04/HDD%20MDVR%204G3.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159870/axelguard/img/AXG04/HDD%20MDVR%204G4.jpg"
+      ],
+      "features": [
+        "Built-in high-performance chipsets coded with H.265 standard",
+        "Supports AHD TVI CVI IPC and Analog formats",
+        "4+1 channels for live preview and storage",
+        "1CH synchronized AV output 1CH VGA output",
+        "Built-in G-sensor for monitoring driving habits",
+        "Allows for horizontal and vertical camera image adjustment for reverse assistance"
+      ],
+      "technical_features": [
+        "Operating system Embedded Linux OS",
+        "GUI interface supports mouse and remote control",
+        "Two-layer password protection Admin/User",
+        "Video compression H.265",
+        "Image resolution 1080P/720P/960H/D1/CIF",
+        "Recording modes Manual and Alarm",
+        "AV input 4CH 4-pin aviation + 1CH 6-pin aviation for IPC",
+        "AV output 1CH VGA 1CH aviation AV output",
+        "USB 1 USB 2.0 supports U disk/mouse",
+        "Ethernet 1 x 6-pin aviation to RJ45 10M/100M",
+        "Additional ports UART ignition input disaster recovery debug port",
+        "Dimensions 162mm x 153mm x 52mm"
+      ],
+      "pdf_manual": "assets/img/AXG04/4g, 4CH 1080P H265 HDD Mobile DVR (MR9704E) (1).pdf"
+    },
+    {
+      "product_code": "AXG05",
+      "product_type": "MDVR Monitor",
+      "product_name": "7 inch AV Monitor",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159871/axelguard/img/AXG05/7inch%20AV%20monitor.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159873/axelguard/img/AXG05/7inch%20AV%20monitor1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159874/axelguard/img/AXG05/7inch%20AV%20monitor2.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159875/axelguard/img/AXG05/7inch%20AV%20monitor3.png"
+      ],
+      "features": [
+        "7-inch compact display, ideal for portable use",
+        "AV input for clear video transmission",
+        "800x480 resolution for sharp visuals",
+        "Includes mounting options for easy installation"
+      ],
+      "technical_features": [
+        "Display Size: 7 inches (diagonal)",
+        "Resolution: 800x480 pixels",
+        "Input: VGA (15-pin D-sub connector)",
+        "Power Supply: DC 12V"
+      ]
+    },
+    {
+      "product_code": "AXG07",
+      "product_type": "MDVR Monitor",
+      "product_name": "7inch VGA Monitor",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159876/axelguard/img/AXG07/7inch%20VGA.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159877/axelguard/img/AXG07/7inch%20VGA1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159878/axelguard/img/AXG07/7inch%20VGA2.png"
+      ],
+      "features": [
+        "7-inch compact display, ideal for portable use",
+        "AV input for clear video transmission",
+        "800x480 resolution for sharp visuals",
+        "Includes mounting options for easy installation"
+      ],
+      "technical_features": [
+        "Display Size: 7 inches (diagonal)",
+        "Resolution: 800x480 pixels",
+        "Input: VGA (15-pin D-sub connector)",
+        "Power Supply: DC 12V"
+      ]
+    },
+    {
+      "product_code": "AXG10",
+      "product_type": "Indoor Dome Camera",
+      "product_name": "Dome Camera",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159879/axelguard/img/AXG10/indoor%20Dome%20camera.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159880/axelguard/img/AXG10/indoor%20dome%20camera1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159881/axelguard/img/AXG10/indoor%20dome%20camera2.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159882/axelguard/img/AXG10/indoor%20dome%20camera3.png"
+      ],
+      "features": [
+        "Dome-shaped, discreet design for indoor use",
+        "High-definition resolution 2MP",
+        "Infrared LEDs for night vision",
+        "Wide-angle field of view"
+      ],
+      "technical_features": [
+        "Resolution: 2MP to 4MP (1080p for clear footage)",
+        "R Night Vision: Up to 20 meters for low-light environments",
+        "Video Output: AHD, TVI, CVI, or CVBS for compatibility with vehicle DVRs",
+        "Operating Temperature: -40°C to 70°C for extreme weather conditions",
+        "Durability: Rugged metal housing for harsh environments"
+      ]
+    },
+    {
+      "product_code": "AXG11",
+      "product_type": "Outdoor Bullet camera",
+      "product_name": "Bullet Camera",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159883/axelguard/img/AXG11/Outdoor%20Bullet%20camera.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159885/axelguard/img/AXG11/outdoor%20bullet%20camera1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159884/axelguard/img/AXG11/outdoor%20Bullet%20camera2.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159886/axelguard/img/AXG11/outdoor%20bullet%20camera4.png"
+      ],
+      "features": [
+        "Equipped with IR for night vision, ensuring visibility in low light or darkness",
+        "IP66/IP67-rated housing for protection against rain, dust, and harsh environments",
+        "Offers broad coverage, suitable for monitoring large areas",
+        "Adjustable and durable mount for easy installation on vehicles or outdoor setups"
+      ],
+      "technical_features": [
+        "Resolution: 1080p (2MP) or higher for clear video quality",
+        "Video Output: AHD, TVI, CVI, CVBS for compatibility with various DVR systems",
+        "Housing Material: Metal body for enhanced durability in outdoor environments",
+        "Frame Rate: 25/30 FPS for smooth video playback",
+        "Operating Temperature: -40°C to 70°C, suitable for extreme weather conditions"
+      ]
+    },
+    {
+      "product_code": "AXG17",
+      "product_type": "Dashcam",
+      "product_name": "4 Inch 2 Ch Dashcam",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159887/axelguard/img/AXG17/4inch%20dashcam.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159888/axelguard/img/AXG17/4inch%20dashcam1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159891/axelguard/img/AXG17/4inch%20dashcam2.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159892/axelguard/img/AXG17/4inch%20dashcam3.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159894/axelguard/img/AXG17/4inch%20dashcam4.png"
+      ],
+      "features": [
+        "170° ultra-wide-angle lens with high-definition display",
+        "Easily switch between camera, video, and playback modes",
+        "Starts and stops recording with vehicle power",
+        " Records automatically when motion is detected",
+        "G-sensor detects vibrations for recording during parking"
+      ],
+      "technical_features": [
+        "Video Resolution: Maximum resolution of 1080P; supports PAL/NTSC video formats",
+        "File Format: Videos are recorded in AVI format with M-JPEG video compression",
+        "Memory Card: Supports TF cards with a maximum capacity of 32GB",
+        "Power Interface: Operates on 5V 1A power, with a built-in battery for backup"
+      ],
+      "pdf_manual": "assets/img/AXG17/4Inch 3Channel Touch Screen Dash Cam.pdf"
+    },
+    {
+      "product_code": "AXG18",
+      "product_type": "Dashcam",
+      "product_name": "10 inch 2 Ch Full Touch Dashcam",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159895/axelguard/img/AXG18/10inch%20dashcam.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159896/axelguard/img/AXG18/10inch%20dashcam1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159897/axelguard/img/AXG18/10inch%20dashcam2.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159898/axelguard/img/AXG18/10inch%20dashcam3.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159899/axelguard/img/AXG18/10inch%20dashcam4.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159900/axelguard/img/AXG18/10inch%20dashcam5.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159901/axelguard/img/AXG18/10inch%20dashcam6.png"
+      ],
+      "features": [
+        "Remote Monitor & GPS Logger Tracking: Remotely track car location and capture video via app with internet connection",
+        "GPS Navigation: Download and store GPS routes for easy navigation",
+        "4G Network Support: Ensures smooth and faster GPS navigation experience",
+        "App Playback: View video clips and images on your smartphone remotely"
+      ],
+      "technical_features": [
+        "GPS Antenna: Provides enhanced accuracy with an additional GPS antenna",
+        "Internal Memory: Stores downloaded GPS routes for offline use",
+        "4G Network: Supports quick GPS functionality using a 4G network",
+        "Smartphone App: Requires internet connectivity for remote monitoring and playback"
+      ]
+    },
+    {
+      "product_code": "AXG19",
+      "product_type": "Dashcam",
+      "product_name": "10 inch 2 Ch 4g, GPS, Android Dashcam",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159902/axelguard/img/AXG19/10inch%20dashcam.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159903/axelguard/img/AXG19/10inch%20dashcam1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159904/axelguard/img/AXG19/10inch%20dashcam2.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159905/axelguard/img/AXG19/10inch%20dashcam3.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159906/axelguard/img/AXG19/10inch%20dashcam4.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159907/axelguard/img/AXG19/10inch%20dashcam5.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159908/axelguard/img/AXG19/10inch%20dashcam6.png"
+      ],
+      "features": [
+        "Full Touch Screen: Features a responsive full touch screen interface",
+        "GPS Navigation Support: Provides GPS navigation for easy travel",
+        "FM Transmitter Support: Transmits audio via FM to the car's stereo system",
+        "Bluetooth Hands-Free and Music: Supports Bluetooth for hands-free calls and music streaming",
+        "4G and Hotspot: Enables 4G connectivity and acts as a hotspot for other devices"
+      ],
+      "technical_features": [
+        "Processor: Spreadtrum SL8541E, quad-core Cortex-A53 @ 1.4GHz",
+        "Operating System: Powered by Android 8.1",
+        "Front Camera: High-definition front camera for video recording",
+        "Rear Camera: FHD rear camera with a 6-meter cable for parking assistance",
+        "Video Format: Supports TS/MP4 video recording formats"
+      ],
+      "pdf_manual": "assets/img/AXG19/10inch Android Dash cam.pdf"
+    },
+    {
+      "product_code": "AXG20",
+      "product_type": "Dashcam",
+      "product_name": "4k Dashcam 12 inch",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159909/axelguard/img/AXG20/12inch%20dashcam.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159910/axelguard/img/AXG20/12inch%20dashcam.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159911/axelguard/img/AXG20/12inch%20dashcam1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159912/axelguard/img/AXG20/12inch%20dashcam3.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159913/axelguard/img/AXG20/12inch%20dashcam5.png"
+      ],
+      "features": [
+        "Large, high-definition display for easy navigation and viewing",
+        "Enables audio recording and playback on the device",
+        " Allows wireless data transfer and remote management",
+        "Provides real-time location tracking and navigation",
+        "Starts recording when the car is powered on via the cigarette lighter"
+      ],
+      "technical_features": [
+        "160° wide-angle lens for broad coverage",
+        "Captures video in 3840x2160 resolution at 30 frames per second",
+        "Supports micro SD/micro SDHC cards with up to 128GB capacity",
+        "Operates reliably between -20℃ and 70℃"
+      ],
+      "pdf_manual": "assets/img/AXG20/12inch 4k Dash Cam.pdf"
+    },
+    {
+      "product_code": "AXG21",
+      "product_type": "Dashcam",
+      "product_name": "2k 12 inch Dashcam",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159914/axelguard/img/AXG21/12inch%20dashcam.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159915/axelguard/img/AXG21/12inch%20dashcam.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159916/axelguard/img/AXG21/12inch%20dashcam1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159917/axelguard/img/AXG21/12inch%20dashcam2.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159918/axelguard/img/AXG21/12inch%20dashcam3.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159918/axelguard/img/AXG21/12inch%20dashcam5.png"
+      ],
+      "features": [
+        "High-definition touch screen for seamless navigation and viewing",
+        "Enables audio recording and playback directly on the dash cam",
+        "Facilitates wireless data transfer and easy device management",
+        "Offers location tracking and navigation assistance",
+        "Automatically begins recording when the vehicle is powered on via the cigarette lighter"
+      ],
+      "technical_features": [
+        "Allwinner V533 for efficient processing",
+        "160° wide-angle lens for wider field of view",
+        "3840x2160 at 30 FPS for ultra HD video recording",
+        "Supports micro SD/micro SDHC cards up to 128GB capacity",
+        "Functions in temperatures from -20°C to 70°C"
+      ],
+      "pdf_manual": "assets/img/AXG21/12inch 4k Dash Cam.pdf"
+    },
+    {
+      "product_code": "AXG26",
+      "product_type": "RFID Tags",
+      "product_name": "Animal Tag",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159920/axelguard/img/AXG26/Animal_Tag.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159921/axelguard/img/AXG26/Animal_Tag1.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159922/axelguard/img/AXG26/Animal_Tag2.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159923/axelguard/img/AXG26/Animal_Tag3.jpg"
+      ],
+      "features": [
+        "Enhances communication distance and recognition rates, ideal for large farms",
+        "Advanced algorithm with 99% recognition rate, supporting up to 400m communication range",
+        "Each tag has a globally unique, non-changeable ID with customizable laser engraving",
+        "Supports future expansions like ear temperature, motion detection, and light alarms via 2.4G IoT tech",
+        "Complies with agricultural standards, durable with a 3% drop rate and a weight of 17g"
+      ],
+      "technical_features": [
+        "MR3876A for product identification",
+        "Operates at 2440MHz",
+        "Uses GFSK (Gaussian Frequency Shift Keying) for signal modulation",
+        "Delivers data at 1Mbit/s",
+        " Lasts up to 3 years"
+      ],
+      "pdf_manual": "assets/img/AXG26/UHF RFID Animal Ear Tracking Tag (MR3876A).pdf"
+    },
+    {
+      "product_code": "AXG27",
+      "product_type": "Active RFID Reader",
+      "product_name": "2.4G Ultra-long Range Integrated Reader MR7901P",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159924/axelguard/img/AXG27/RFID_reader.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159925/axelguard/img/AXG27/RFID_reader1.jpg"
+      ],
+      "features": [
+        "Built for wireless connectivity",
+        "Connects and tests via mobile app",
+        "Factory default of 5m, extendable up to 200m with a 7dBm tag in open environments",
+        " Suitable for school buses and building entrances"
+      ],
+      "technical_features": [
+        "Made from high-temperature resistant ABS",
+        "Default 5m, extendable up to 200m",
+        "9dBi for enhanced signal strength",
+        "Operates at 2440MHz with GPRS support on GSM and other bands",
+        "Functions in extreme temperatures from -40°C to 80°C"
+      ],
+      "pdf_manual": "assets/img/AXG27/2.4G Ultra-long Range Integrated Reader MR7901P.pdf"
+    },
+    {
+      "product_code": "AXG31",
+      "product_type": "Dashcam",
+      "product_name": "3CH AI Dashcam",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159931/axelguard/img/AXG31/4ch%20AI%20Dashcam.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159932/axelguard/img/AXG31/4ch%20AI%20Dashcam1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159933/axelguard/img/AXG31/4ch%20AI%20Dashcam2.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159934/axelguard/img/AXG31/4ch%20AI%20Dashcam3.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159936/axelguard/img/AXG31/4ch%20AI%20Dashcam4.png"
+      ],
+      "features": [
+        "AHD Car-Hailing DVR for vehicle monitoring",
+        "Measures 111.3 x 88.7 x 27mm",
+        "Supports DC 8V-36V input",
+        "Supports up to 2x 512GB TF cards",
+        " Runs on Embedded Linux OS"
+      ],
+      "technical_features": [
+        "Supports H.265/H.264 for high compression efficiency",
+        "Built-in 1CH ADAS 1080P/720P camera and 3CH 720P AHD, with AHD/TVI/CVI/CVBS input options",
+        " Built-in GPS/BD/GLONASS, 4G LTE/HSPA/WCDMA, and 2.4GHz WiFi modules",
+        " Tracks vehicle status with GPS drift suppression algorithm",
+        "Advanced vehicle power system with multi-protection circuits and smart management"
+      ],
+      "pdf_manual": "assets/img/AXG31/AHD CAR-HAILING DVR (Dual TF card).pdf"
+    },
+    {
+      "product_code": "AXG38",
+      "product_type": "AI Version MDVR",
+      "product_name": "4CH SD AI MDVR (MR9504ED)",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159941/axelguard/img/AXG38/AI%20mdvr.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159937/axelguard/img/AXG38/AI%20MDVR1.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159939/axelguard/img/AXG38/AI%20MDVR2.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159940/axelguard/img/AXG38/AI%20MDVR3.jpg"
+      ],
+      "features": [
+        " Includes ADAS, DSM, and BSD for enhanced safety",
+        "Utilizes H.265 encoding for high-quality video and efficient storage",
+        "Supports 4CH 1080P/720P AHD cameras",
+        "Built-in super capacitor prevents data loss",
+        "Features GPS/BD/GLONASS, 4G, and optional WiFi"
+      ],
+      "technical_features": [
+        "Runs on Embedded Linux OS",
+        "Supports 4CH 1080P AHD/TVI/CVI/CVBS",
+        "Supports up to 2x 512GB SD cards",
+        "Includes GPS/BD/GLONASS, 4G, and optional WiFi",
+        "Operates on 8-36V DC with intelligent power management"
+      ],
+      "pdf_manual": "assets/img/AXG38/4CH SD  AI MDVR (MR9504ED).pdf"
+    },
+    {
+      "product_code": "AXG39",
+      "product_type": "Dashcam",
+      "product_name": "4 inch 3CH Dash Cam",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159943/axelguard/img/AXG39/4inch%20dashcam.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159948/axelguard/img/AXG39/4inch%20dashcam1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159951/axelguard/img/AXG39/4inch%20dashcam2.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159952/axelguard/img/AXG39/4inch%20dashcam3.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159953/axelguard/img/AXG39/4inch%20dashcam4.png"
+      ],
+      "features": [
+        "Features a high-definition display and a 170-degree ultra-wide-angle lens",
+        "Easily switch between camera, video, and playback modes",
+        "Records automatically when the vehicle powers on and stops when it powers off",
+        "Automatically records when motion is detected in standby mode",
+        "Utilizes a built-in G-sensor to detect vibrations and trigger recording"
+      ],
+      "technical_features": [
+        "Maximum resolution of 1080P, supporting PAL/NTSC formats",
+        "Records videos in AVI format using M-JPEG compression",
+        "Supports TF cards up to 32GB in capacity",
+        "Operates on 5V 1A power with a built-in backup battery",
+        "USB port for data transfer, PC camera function, and charging from multiple sources"
+      ],
+      "pdf_manual": "assets/img/AXG39/4Inch 3Channel Touch Screen Dash Cam.pdf"
+    },
+    {
+      "product_code": "AXG40",
+      "product_type": "Dashcam",
+      "product_name": "WiFi Dashcam",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159955/axelguard/img/AXG40/wifi%20dashcam.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159956/axelguard/img/AXG40/wifi%20dashcam1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159957/axelguard/img/AXG40/wifi%20dashcam2.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159958/axelguard/img/AXG40/wifi%20dashcam3.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159959/axelguard/img/AXG40/wifi%20dashcam4.png"
+      ],
+      "features": [
+        " Provides wireless connection to smartphones and devices for easy access and control",
+        "Continuously records, overwriting the oldest footage for uninterrupted recording",
+        "Features a 140-degree lens for capturing a broader road view",
+        "Enables viewing and managing recordings through a dedicated app",
+        "Built-in triaxial sensor detects impacts and automatically saves important footage"
+      ],
+      "technical_features": [
+        "Supports multiple resolutions, including 2304x1440, 1920x1080P, and 1280x720P for high-quality recording",
+        "Powered by the GK 7202+3238 chip for efficient processing and performance",
+        "Records in H.264 compressed MOV format, balancing quality and storage",
+        "Functions effectively in temperatures from -20°C to 75°C",
+        "Compatible with 2GB to 128GB memory cards, requiring Class 10 or higher for optimal performance"
+      ],
+      "pdf_manual": "assets/img/AXG40/Hidden wifi Dash Cam.pdf"
+    },
+    {
+      "product_code": "AXG42",
+      "product_type": "Indoor Dome Camera",
+      "product_name": "2MP MDVR Audio Camera",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159960/axelguard/img/AXG42/Audio%20camera%201.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159961/axelguard/img/AXG42/Audio%20camera.png"
+      ],
+      "features": [
+        "Delivers 2MP resolution for clear video capture",
+        "Captures high-quality audio alongside video for comprehensive monitoring",
+        "Equipped with a wide-angle lens to cover a larger field of view",
+        "Supports remote viewing and management via smartphone or PC applications"
+      ],
+      "technical_features": [
+        "Utilizes H.264 or H.265 compression for efficient storage without compromising quality",
+        " Functions on a DC power supply of 12V to 36V, suitable for vehicle installations",
+        "Designed to operate in a wide temperature range, typically -20°C to 70°C"
+      ]
+    },
+    {
+      "product_code": "AXG45",
+      "product_type": "Active RFID Reader",
+      "product_name": "2.4G Directional Reader MR7902",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159962/axelguard/img/AXG45/RFID_Active_reader.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159963/axelguard/img/AXG45/RFID_Active_reader1.jpg"
+      ],
+      "features": [
+        "Built for efficient wireless connectivity",
+        "Enables connection and testing via a mobile app",
+        "Default of 5m, extendable up to 200m with a 7dBm tag in open environments",
+        "Suitable for school buses and building entrances",
+        "Facilitates easy setup and operation for various environments"
+      ],
+      "technical_features": [
+        "MR7902, designed for versatile applications",
+        "Made from high-temperature resistant ABS",
+        "Default of 5m, extendable up to 200m",
+        "Operates at 2440MHz with GPRS support on multiple bands",
+        "Functions effectively in a wide range from -40°C to 80°C"
+      ],
+      "pdf_manual": "assets/img/AXG45/2.4G Directional Reader ( indor use) MR7902.pdf"
+    },
+    {
+      "product_code": "AXG46",
+      "product_type": "Enhanced Version MDVR",
+      "product_name": "5ch MDVR SD 4g + GPS + LAN + RS232 + RS485",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159966/axelguard/img/AXG46/SD%20Card%20MDVR%205ch.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159969/axelguard/img/AXG46/SD%20Card%20MDVR%205ch1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159972/axelguard/img/AXG46/SD%20Card%20MDVR%205ch2.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159974/axelguard/img/AXG46/SD%20card%20MDVR%205ch3.png"
+      ],
+      "features": [
+        "H.264/H.265 standard for high compression and excellent image quality",
+        "Operates on 8-36V DC with multiple protection circuits for safety",
+        "Supports SD cards up to 512GB, with a built-in super capacitor to prevent data loss",
+        "Optional GPS/BD/GLONASS, WiFi, and 3G/4G connectivity",
+        "Functions effectively in a temperature range of -20°C to 70°C"
+      ],
+      "technical_features": [
+        "Runs on Embedded Linux OS for robust performance",
+        " Supports both PAL and NTSC formats",
+        " Utilizes H.264/H.264+/H.265/H.265+ for efficient video compression",
+        "Capable of playback at 1080P, 720P, 960H, D1, and CIF resolutions",
+        "Consumes approximately 1G/h/channel for 1080P, 0.5G/h/channel for 720P, and 0.38G/h/channel for 960H"
+      ],
+      "pdf_manual": "assets/img/AXG46/4g, 1080 SD, GPS Mobile DVR (MR9504E).pdf"
+    },
+    {
+      "product_code": "AXG47",
+      "product_type": "Enhanced Version MDVR",
+      "product_name": "5ch MDVR HDD 4g + GPS + LAN + RS232 + RS485",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159975/axelguard/img/AXG47/HDD%20MDVR%204G.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159977/axelguard/img/AXG47/HDD%20MDVR%204G1.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159978/axelguard/img/AXG47/HDD%20MDVR%204G2.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159979/axelguard/img/AXG47/HDD%20MDVR%204G3.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159981/axelguard/img/AXG47/HDD%20MDVR%204G4.jpg"
+      ],
+      "features": [
+        "Supports multiple formats including AHD, TVI, CVI, IPC, and Analog",
+        "Provides 4+1 channels for simultaneous live preview and storage",
+        "Features 1CH synchronized AV output and 1CH VGA output for flexible display options",
+        "Built-in G-sensor monitors driving habits for enhanced safety",
+        "Allows horizontal and vertical camera image adjustment for improved visibility when reversing"
+      ],
+      "technical_features": [
+        "Runs on Embedded Linux OS for stable performance",
+        "Features a GUI that supports mouse and remote control for easy navigation",
+        "Utilizes H.265 for efficient video storage and quality",
+        " Supports manual and alarm recording modes for flexibility",
+        "Includes 4CH AV input, 1CH VGA output, USB 2.0, and Ethernet RJ45 for versatile connectivity"
+      ],
+      "pdf_manual": "assets/img/AXG47/Five in One 4CH 1080P MR9704E.pdf"
+    },
+    {
+      "product_code": "AXG48",
+      "product_type": "Enhanced Version MDVR",
+      "product_name": "8CH 1080P HDD Mobile DVR (MR9704E)",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159982/axelguard/img/AXG48/8ch%20MDVR%20HDD.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159983/axelguard/img/AXG48/8ch%20MDVR%20HDD1.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159984/axelguard/img/AXG48/8ch%20MDVR%20HDD2.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159985/axelguard/img/AXG48/8ch%20MDVR%20HDD3.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159986/axelguard/img/AXG48/8ch%20MDVR%20HDD4.jpg"
+      ],
+      "features": [
+        " Equipped with high-performance chipsets using H.265 standard for efficient processing",
+        "Supports AHD, TVI, CVI, IPC, and Analog formats for versatile connectivity",
+        "Offers 4+1 channels for simultaneous live preview and storage",
+        "Features 1CH synchronized AV output and 1CH VGA output for flexible display options",
+        "Built-in G-sensor monitors driving habits for improved safety",
+        "Allows horizontal and vertical adjustments of camera images for better visibility when reversing"
+      ],
+      "technical_features": [
+        "Runs on Embedded Linux OS for reliable performance",
+        "GUI supports mouse and remote control for user-friendly navigation",
+        " Features two-layer password protection (Admin/User) for enhanced security",
+        "Utilizes H.265 compression for efficient storage and high quality",
+        "Supports multiple resolutions: 1080P, 720P, 960H, D1, and CIF"
+      ],
+      "pdf_manual": "assets/img/AXG48/4g, 4CH 1080P H265 HDD Mobile DVR (MR9704E) (1).pdf"
+    },
+    {
+      "product_code": "AXG49",
+      "product_type": "MDVR Other Accessories ",
+      "product_name": "15mt Cable",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159988/axelguard/img/AXG49/15mt%20cable.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159989/axelguard/img/AXG49/15mt%20cable1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159987/axelguard/img/AXG49/15mt%20cable%202.png"
+      ],
+      "features": [
+        "15 meters (49.2 feet) for extended reach",
+        "Standardized connectors (e.g., HDMI, USB)",
+        "Flexible design for easy routing and installation",
+        "Lightweight for easy transport and handling"
+      ],
+      "technical_features": [
+        " High-quality copper or fiber optic for optimal signal transmission",
+        "Foil or braided shielding to minimize interference",
+        "Works with a wide range of devices (e.g., cameras, computers, displays)"
+      ]
+    },
+    {
+      "product_code": "AXG50",
+      "product_type": "MDVR Other Accessories ",
+      "product_name": "VGA Cable",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159990/axelguard/img/AXG50/VGA%20cable.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159992/axelguard/img/AXG50/VGA%20cable1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159994/axelguard/img/AXG50/VGA%20cable2.png"
+      ],
+      "features": [
+        "Capable of supporting resolutions up to 1920x1080 (Full HD) or higher, depending on cable quality",
+        "Typically uses a 15-pin D-subminiature connector for secure connections to monitors and computers",
+        "Transmits analog video signals, making it compatible with various older display devices",
+        "Available in various lengths, typically ranging from 1.5 meters to 30 meters, accommodating different setups"
+      ]
+    },
+    {
+      "product_code": "AXG52",
+      "product_type": "AI camera",
+      "product_name": " ADAS Camera",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159995/axelguard/img/AXG52/ADAS.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159997/axelguard/img/AXG52/ADAS1.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159999/axelguard/img/AXG52/ADAS2.jpg"
+      ],
+      "features": [
+        " Ensures superior image capturing with enhanced clarity and detail",
+        " Provides high-definition video resolution for clear visuals",
+        "Captures vibrant images and video in full color for improved visual representation",
+        "Engineered for easy integration into vehicle systems, saving space and simplifying installation"
+      ],
+      "technical_features": [
+        "130W CMOS Sensor for high-resolution image capturing",
+        "Diagonal 85°, Horizontal 60°, Vertical 53° for extensive coverage",
+        "PAL standard for video output compatibility",
+        "Ranges from -25℃ to 75℃ for reliable performance in various conditions"
+      ],
+      "pdf_manual": "assets/img/AXG52/ADAS Camera AXG-ADAS-S2 SPEC.pdf.pdf"
+    },
+    {
+      "product_code": "AXG53",
+      "product_type": "AI camera",
+      "product_name": "DSM Camera",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160000/axelguard/img/AXG53/DSM.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160001/axelguard/img/AXG53/DSM1.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160003/axelguard/img/AXG53/DSM2.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160004/axelguard/img/AXG53/DSM3.jpg"
+      ],
+      "features": [
+        "TL-DMS-S2, representing the specific device model",
+        "130W CMOS Sensor for high-resolution image capturing",
+        "Captures images in Black & White for clarity in monochrome imaging",
+        "Diagonal 85°, Horizontal 60°, Vertical 53° for a broad field of view"
+      ],
+      "technical_features": [
+        "rovides high-quality image capturing with enhanced sensitivity and low-light performance",
+        " Delivers clear and sharp video output at a resolution of 1280x720 pixels",
+        "Supports PAL video output format at 25 frames per second for smooth video playback"
+      ],
+      "pdf_manual": "assets/img/AXG53/DSM Camera AXG-DSM-S2.pdf"
+    },
+    {
+      "product_code": "AXG54",
+      "product_type": "AI camera",
+      "product_name": "BSD Camera",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160005/axelguard/img/AXG54/BSD%20camera.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160006/axelguard/img/AXG54/BSD%20camera1.jpg"
+      ],
+      "features": [
+        " Coded with H.265/H.264 standard for efficient video compression and high-quality image processing",
+        "Supports simultaneous viewing and recording of four 1080P channels, with 1CH synchronized audio/video output",
+        "Features UPS power input, image mirror adjustment, and reversing image assistance for versatile operation",
+        "Integrates GPS/BD options to enhance accuracy and reduce drift in location tracking",
+        "Maintains high image quality with a 90-degree rotation option for flexible installation and viewing"
+      ],
+      "technical_features": [
+        " Operates on a wide voltage range of 9-36V DC, equipped with low voltage and short circuit protection for safe usage",
+        " Utilizes proprietary technology to encrypt and protect data, enhancing SD card longevity and reliability",
+        "Prevents data loss and SD card damage, supporting storage capacities of up to 512G SD cards",
+        "Provides fast positioning capabilities with detection features for antenna plug-in, unplug, and short circuit issues"
+      ],
+      "pdf_manual": "assets/img/AXG54/BSD Camera TL-BSD-EF2 SPEC en-GB.pdf"
+    },
+    {
+      "product_code": "AXG55",
+      "product_type": "MDVR Other Accessories ",
+      "product_name": "10mt Cable",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160007/axelguard/img/AXG55/10mt%20cable%201.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160008/axelguard/img/AXG55/10mt%20cable%202.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160009/axelguard/img/AXG55/10mt%20cable.png"
+      ],
+      "features": [
+        "10 meters (32.8 feet) for extended connectivity",
+        " Designed for easy routing and installation in tight spaces",
+        " Built to withstand wear and tear, suitable for various environments",
+        " Available in multiple colors for easy identification"
+      ],
+      "technical_features": [
+        "Made with high-quality copper or fiber optic for optimal signal transmission",
+        " Includes foil or braided shielding to reduce interference",
+        "Operating temperature typically between -20°C to +80°C for reliable performance",
+        "Works with a wide range of devices, including  monitors, and cameras"
+      ]
+    },
+    {
+      "product_code": "AXG56",
+      "product_type": "MDVR Monitor",
+      "product_name": "7inch Heavy Duty Monitor",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160010/axelguard/img/AXG56/7inch%20Heavy%20duty%20monitor.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160011/axelguard/img/AXG56/7inch%20Heavy%20duty%20monitor2.jpg"
+      ],
+      "features": [
+        " 7-inch TFT-LCD screen with a 16:9 aspect ratio for optimal viewing",
+        "Display resolution of 800x480 pixels for clear image quality",
+        "View angles of 70° (Up), 45° (Down), and 70° (Left/Right) for flexible viewing positions",
+        "Supports multiple languages including Chinese, English, German, French, and Italian for user accessibility"
+      ],
+      "technical_features": [
+        "Operates on a DC input range of +9V to +35V for versatile power options",
+        " Operating temperature ranges from -30°C to 70°C; storage temperature ranges from -40°C to 75°C for reliable performance in extreme conditions",
+        "Supports CVBS and VGA video inputs for flexible connectivity",
+        "Measures 185mm (L) x 135mm (W) x 60mm (T) with a sunhat, and weighs approximately 0.45 kg for compactness and portability"
+      ],
+      "pdf_manual": "assets/img/AXG56/7inch Heavy Duty VGA Monitor .pdf"
+    },
+    {
+      "product_code": "AXG57",
+      "product_type": "Outdoor Bullet camera",
+      "product_name": "AXEL GUARD-150RH Heavy Duty Bullet Camera",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160013/axelguard/img/AXG57/Heavy_duty_camera.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160014/axelguard/img/AXG57/Heavy_duty_camera1.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160016/axelguard/img/AXG57/Heavy_duty_camera2.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160018/axelguard/img/AXG57/Heavy_duty_camera3.jpg"
+      ],
+      "features": [
+        " Provides clear images up to 150 meters in complete darkness",
+        "2 MPX Full HD sensor for detailed and sharp video quality",
+        "Supports 1080p real-time video for clear surveillance footage",
+        "Utilizes H.265/H.264 compression to optimize storage and bandwidth usage",
+        "Compatible with a wide range of surveillance equipment and platforms for seamless integration"
+      ],
+      "technical_features": [
+        "1/2.8' progressive scan CMOS sensor for high-quality image capture",
+        "Enhances image clarity in varied lighting conditions for balanced visibility",
+        "IP66 rated for water and dust resistance with TVS3000V lightning and surge protection for durability in harsh environments"
+      ],
+      "pdf_manual": "assets/img/AXG57/HDC C-120.pdf"
+    },
+    {
+      "product_code": "AXG58",
+      "product_type": "Enhanced Version MDVR",
+      "product_name": "4G, 1080 SD, GPS Mobile DVR (MR9504E)",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160028/axelguard/img/AXG58/SD%20Card%20MDVR%205ch.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160037/axelguard/img/AXG58/SD%20Card%20MDVR%205ch1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160056/axelguard/img/AXG58/SD%20Card%20MDVR%205ch2.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160059/axelguard/img/AXG58/SD%20card%20MDVR%205ch3.png"
+      ],
+      "features": [
+        "H.264/H.265 standard for efficient video compression and high-quality imaging",
+        "Supports AHD/TVI/CVI/IPC/ANALOG for versatile video input options",
+        "Supports SD cards up to 512GB with a built-in super capacitor to prevent data loss",
+        "Optional GPS/BD/GLONASS, WiFi, and 3G/4G connectivity for real-time data transmission",
+        "Operates on 8-36V DC with multiple protection circuits and consumes a maximum of 18W"
+      ],
+      "technical_features": [
+        " Embedded Linux OS for stable performance",
+        "Supports both PAL and NTSC formats",
+        "Uses H.264/H264+/H265/H265+ for efficient video compression",
+        "Supports 1080P, 720P, 960H, D1, and CIF resolutions",
+        "G711A, G711, G.726, MG.726, ADPCM, IMA for audio data handling"
+      ],
+      "pdf_manual": "assets/img/AXG58/4g, 4CH 1080P H265 HDD Mobile DVR (MR9704E) (1).pdf"
+    },
+    {
+      "product_code": "AXG59",
+      "product_type": "Indoor Dome Camera",
+      "product_name": "Heavy Duty Dome Camera",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160060/axelguard/img/AXG59/Heavy%20duty%20dome%20camera.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160061/axelguard/img/AXG59/Heavy%20duty%20dome%20camera1.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160062/axelguard/img/AXG59/Heavy%20duty%20dome%20camera2.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160063/axelguard/img/AXG59/Heavy%20duty%20dome%20camera3.jpg"
+      ],
+      "features": [
+        "Built to withstand harsh environments and mechanical impacts",
+        "Supports clear image capture in low-light or complete darkness",
+        "IP66 or higher rating for water and dust resistance",
+        "Robust casing to protect against tampering or vandalism"
+      ],
+      "technical_features": [
+        "2MP/4MP CMOS sensor for high-resolution video",
+        " Supports multiple formats such as AHD/TVI/CVI/analog",
+        "Operates on 12V DC or PoE (Power over Ethernet)",
+        "Ranges from -30°C to 60°C, suitable for extreme conditions"
+      ]
+    },
+    {
+      "product_code": "AXG62",
+      "product_type": "MDVR Other Accessories ",
+      "product_name": "Alcohol Tester",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160065/axelguard/img/AXG62/Alcohol%20Tester.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160066/axelguard/img/AXG62/Alcohol%20tester1.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160067/axelguard/img/AXG62/alcohol%20Tester2.jpg"
+      ],
+      "features": [
+        "Ensures accurate and reliable alcohol measurement",
+        "128x64 display screen for clear and easy-to-read results",
+        ": 5-second blow time with automatic flow rate detection for efficient testing",
+        "Can be combined with vehicle systems to prevent the car from starting if alcohol levels are above the set limit"
+      ],
+      "technical_features": [
+        "Operates on an onboard power supply with a wide voltage range of DC 5V-24V",
+        "Detects alcohol levels from 0.00% to 4.00%, with an error margin of ±0.05%",
+        " Supports RS232 and RS485 communication for data transfer",
+        "Requires a blowing flow rate of 10 L/min for accurate measurements",
+        "Weighs 250g with dimensions of 1406030mm for easy portability and installation"
+      ],
+      "pdf_manual": "assets/img/AXG62/Alcohol_Tester_Full_Details.pdf.pdf"
+    },
+    {
+      "product_code": "AXG63",
+      "product_type": "MDVR Other Accessories ",
+      "product_name": "2 Way Communication",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160068/axelguard/img/AXG63/2%20way%20communication.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160070/axelguard/img/AXG63/2%20way%20communication1.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160071/axelguard/img/AXG63/2%20way%20communication2.jpg"
+      ],
+      "features": [
+        "Supports real-time two-way voice communication between the control center and vehicle operators",
+        "Enables both audio input from the driver and output from the control center, ensuring clear communication",
+        " Allows drivers to initiate communication with the control center at the press of a button",
+        "Enables remote transmission of commands from the central system to the vehicle through the MDVR system",
+        "Records all two-way audio communications for future reference, enhancing security and accountability"
+      ],
+      "technical_features": [
+        "Supports 1 CH audio input (for the driver) and 1 CH audio output (for speakers/headsets in the vehicle)",
+        "Uses 3G/4G cellular network communication to transmit audio signals, supporting seamless two-way communication",
+        "Requires a stable mobile network connection for uninterrupted communication",
+        "Utilizes G.711/G.726 audio compression format for optimal voice clarity while reducing bandwidth usage",
+        "Integrated microphone and speaker support for hands-free voice communication within the vehicle"
+      ]
+    },
+    {
+      "product_code": "AXG64",
+      "product_type": "MDVR Other Accessories ",
+      "product_name": "RS232 Adapter",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160073/axelguard/img/AXG64/TTL-RS232%20adapter.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160074/axelguard/img/AXG64/TTL-RS232%20adapter1.jpg"
+      ],
+      "features": [
+        "Easy to install and operate without requiring any additional drivers or configuration",
+        "Works with a wide range of devices, including modems, printers, and industrial machinery",
+        "Small, lightweight form factor for easy integration into various setups",
+        "Ensures reliable data transmission over long distances, up to 15 meters or more"
+      ],
+      "technical_features": [
+        "Supports data transfer speeds from 300bps to 115200bps, adaptable to various communication needs",
+        "Operates within the standard RS232 voltage range (-12V to +12V), ensuring compatibility with most devices.",
+        " Standard 9-pin D-sub connector (DB9) for easy connection to RS232 ports",
+        "Works reliably in a wide temperature range, typically from -20°C to 85°C, suitable for industrial environments"
+      ]
+    },
+    {
+      "product_code": "AXG65",
+      "product_type": "MDVR Other Accessories ",
+      "product_name": "Maintenance Tool",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160076/axelguard/img/AXG65/Maintance%20tool%20%281%29.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160078/axelguard/img/AXG65/Maintance%20tool.jpg"
+      ],
+      "features": [
+        "Allows for real-time diagnostics and system health checks for MDVRs, ensuring optimal performance",
+        "Supports remote and local firmware updates to keep the MDVR system up-to-date with the latest software",
+        "Provides data backup options and helps in recovering video and system logs in case of system failure",
+        "Enables real-time monitoring of connected devices, including GPS, video feeds, and communication status"
+      ],
+      "technical_features": [
+        "Supports USB, RS232, and Ethernet interfaces for easy connectivity to MDVR units",
+        "Typically powered through USB (5V DC) or an external power source (12V DC), depending on usage",
+        "Can run full diagnostics within 5-10 minutes, depending on the system configuration",
+        "Compatible with various file systems like FAT32, NTFS, and EXT4, for seamless data management and recovery"
+      ]
+    },
+    {
+      "product_code": "AXG67",
+      "product_type": "MDVR Other Accessories ",
+      "product_name": "Panic Button",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160079/axelguard/img/AXG67/Panic%20Button%201.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160080/axelguard/img/AXG67/Panic%20Button%202.jpg"
+      ],
+      "features": [
+        " Sends immediate alerts to the control center when pressed, notifying them of emergencies",
+        "Compact design and simple integration into vehicle systems for quick deployment",
+        "Provides both visual LED indication and an audible beep to confirm activation",
+        "Designed with rugged, shockproof materials to withstand harsh vehicle environments",
+        "Allows control centers to monitor panic button activations in real-time through MDVR connectivity"
+      ],
+      "technical_features": [
+        "Typically operates on 12V-24V DC, making it compatible with most vehicle power systems",
+        "Wired connection to the MDVR via digital I/O ports or alarm inputs",
+        "Immediate response within 0.5 seconds of button press, ensuring fast reaction times",
+        "Designed to function reliably within -40°C to +85°C, suitable for extreme environments",
+        "Generally supplied with a 2-3 meter cable for flexible installation within the vehicle cabin."
+      ]
+    },
+    {
+      "product_code": "AXG69",
+      "product_type": "MDVR Other Accessories ",
+      "product_name": "720 2CH Monitor Kit",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160082/axelguard/img/AXG69/720%202ch%20Monitor%20kit.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160083/axelguard/img/AXG69/720%202ch%20monitor%20kit1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160084/axelguard/img/AXG69/720%202ch%20monitor%20kit2.png"
+      ],
+      "features": [
+        "Supports up to two video inputs, allowing simultaneous display of two camera feeds for enhanced visibility",
+        "Provides clear and detailed video quality with 1280x720 resolution for both channels",
+        "Offers split-screen viewing to monitor both camera feeds at the same time or switch between them",
+        "Equipped with simple touch or button controls for easy switching between channels and adjusting settings"
+      ],
+      "technical_features": [
+        "Typically comes with a 7-inch or larger TFT-LCD screen, ensuring optimal viewing",
+        "Supports 2 x 4-pin connectors or RCA inputs for video signal transmission",
+        " Designed to run on 12V-24V DC, making it compatible with vehicle electrical systems",
+        " Functions reliably in temperatures ranging from -20°C to 70°C, suitable for various environmental conditions"
+      ]
+    },
+    {
+      "product_code": "AXG70",
+      "product_type": "RFID Tags",
+      "product_name": "2.4G Active Tag (Card Type) HX607",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160085/axelguard/img/AXG70/RFID_Activetag.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160086/axelguard/img/AXG70/RFID_Activetag1.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160087/axelguard/img/AXG70/RFID_Activetag2.jpg"
+      ],
+      "features": [
+        "Offers powerful anti-jamming ability for stable performance",
+        "Configurable up to 80 meters via software settings",
+        "Supports flexible application development by conforming to industry standards",
+        "Uses 2.4G + 13.56MHz technology with a reading range of over 3cm for 13.56MHz (125KHz optional)",
+        "Ultra-low with an average working current of less than 10uA"
+      ],
+      "technical_features": [
+        "HX607, a 2.4G card type (Beacon type) with MAX RF power output",
+        "Up to 3 years using a CR2032 battery with a capacity of 220mA",
+        "Rated IP67, ensuring dustproof and waterproof performance",
+        "Operates at 2.44GHz with 0dBm output power",
+        "Made of ABS heat-resistant material, measuring 86x55x5.5mm"
+      ],
+      "pdf_manual": "assets/img/AXG70/2.4G Active Tag (Card Type) HX607.pdf"
+    },
+    {
+      "product_code": "AXG72",
+      "product_type": "AI Version MDVR",
+      "product_name": "4CH HDD Commercial Vehicle AIMDVR (MA9704E)",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160088/axelguard/img/AXG72/HDD%20AI%20MDVR.jpg",
+        "assets/img/AXG72/AI MDVR1.jpg",
+        "assets/img/AXG72/AI MDVR2.jpg",
+        "assets/img/AXG72/AI MDVR3.jpg"
+      ],
+      "features": [
+        "Includes ADAS, DSM, and BSD for enhanced vehicle safety",
+        "Supports 4CH 1080P/720P AHD video with H.265 encoding for superior video quality",
+        "Features a built-in super capacitor with HDD and SD card support for secure data storage",
+        "Equipped with GPS/BD/GLONASS, 4G, and optional WiFi for seamless communication",
+        "Operates on 9-36V DC with intelligent power management for stable operation"
+      ],
+      "technical_features": [
+        "Supports 4CH 1080P AHD/TVI/CVI/CVBS video inputs",
+        "Provides VGA and CVBS video outputs for flexible display options",
+        " 4 CH audio input and 2 CH analog output for sound management",
+        " Uses H.264/H.265 for efficient video compression and storage"
+      ],
+      "pdf_manual": "assets/img/AXG72/4CH HDD Commercial Vehicle AIMDVR (MA9704E).pdf"
+    },
+    {
+      "product_code": "AXG73",
+      "product_type": "RFID Tags",
+      "product_name": "MR 6700A UHF Passive electronic tag",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160097/axelguard/img/AXG73/Passive_electronictag.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160099/axelguard/img/AXG73/Passive_electronictag1.jpg"
+      ],
+      "features": [
+        "Frequency-hopping work mode enhances resistance to interference",
+        "Allows users to customize read-write data for specialized applications",
+        "Effective read range up to 8 meters, depending on reader and antenna",
+        "Conforms to industry regulations for flexible usage"
+      ],
+      "technical_features": [
+        ": No battery required, supports over 100,000 write-erase cycles with a lifespan of over 10 years",
+        "Operates within the ISM band of 860-960MHz",
+        "Supports both fixed frequency and frequency-hopping spread spectrum (FHSS), software programmable",
+        " Programmable with an average reading time per 64 bits of less than 10 milliseconds"
+      ],
+      "pdf_manual": "assets/img/AXG73/MR 6700A UHF Passive electronic tag (1).pdf"
+    },
+    {
+      "product_code": "AXG74",
+      "product_type": "MDVR Other Accessories ",
+      "product_name": " Ultrasonic Fuel Sensor (TUA03)",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160100/axelguard/img/AXG74/Fuel_sensor.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160101/axelguard/img/AXG74/Screenshot%202024-07-30%20111708.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160102/axelguard/img/AXG74/Screenshot%202024-07-30%20111717.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160103/axelguard/img/AXG74/Screenshot%202024-07-30%20111724.png"
+      ],
+      "features": [
+        "Utilizes ultrasonic echo ranging for precise liquid level measurement without tank drilling or damage",
+        "Transmits fuel quantity data to a back-end system via GPS to prevent theft and optimize costs",
+        "Applicable in automotive, chemical, water conservancy, and liquid storage industries for level detection",
+        "Can be externally installed on tank surfaces without internal modifications",
+        "Offers excellent stability with CE, ROHS, CNEX explosion-proof, and IP67 certification"
+      ],
+      "technical_features": [
+        "Operating Voltage: 9~36V DC",
+        "Measurement Range: 3~100 cm, depending on tank material and thickness",
+        "Measurement Accuracy: ±0.5% of Full Scale (FS)",
+        "Measurement Resolution: 0.1 mm",
+        "Operating Temperature Range: -30℃ to +80℃"
+      ],
+      "pdf_manual": "assets/img/AXG74/Ultrasonic_Fuel (1).pdf"
+    },
+    {
+      "product_code": "AXG75",
+      "product_type": "MDVR Other Accessories ",
+      "product_name": "5mt Cable",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160104/axelguard/img/AXG75/5mt%20Cable.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160108/axelguard/img/AXG75/5mt%20cable1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160105/axelguard/img/AXG75/5mt%20cable%202.png"
+      ],
+      "features": [
+        "Standard 5-meter length for versatile applications and installations",
+        "ighly flexible design allows for easy routing in tight spaces",
+        "Made from robust materials to withstand wear and tear in various environments",
+        "Designed to work with a wide range of devices and connectors"
+      ],
+      "technical_features": [
+        "Typically copper or aluminum for excellent conductivity",
+        "PVC or polyethylene insulation to provide electrical safety and protection",
+        "Commonly available in various wire gauges (e.g., 18 AWG, 22 AWG) to suit different current requirements",
+        "Rated for operating temperatures, typically between -20℃ to +75℃"
+      ]
+    },
+    {
+      "product_code": "AXG78",
+      "product_type": "Dashcam camera",
+      "product_name": "4K Monitor Kit Camera",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160109/axelguard/img/AXG78/4k%20Monitor%20Camera.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160111/axelguard/img/AXG78/4k%20monitor%20camera1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160110/axelguard/img/AXG78/4k%20monitor%20Camera2.png"
+      ],
+      "features": [
+        "Supports 4K resolution (3840 x 2160 pixels) for stunning image clarity and detail",
+        "Enhances contrast and color accuracy, making it suitable for various lighting conditions",
+        "Lightweight and portable, ideal for on-the-go shooting and easy setup"
+      ],
+      "technical_features": [
+        "Typically equipped with a high-quality CMOS or CCD sensor for superior image capture",
+        " Offers a wide-angle lens, usually around 120 degrees or more, for broader scene coverage",
+        "Enhanced low-light sensitivity for improved performance in dim environments"
+      ]
+    },
+    {
+      "product_code": "AXG80",
+      "product_type": "Active RFID Reader",
+      "product_name": "2.4 GHz Omni-directional RFID Reader (MR3102E)",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160112/axelguard/img/AXG80/Omni_RFID_reader.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160113/axelguard/img/AXG80/Omni_RFID_reader1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160115/axelguard/img/AXG80/Omni_RFID_reader2.png"
+      ],
+      "features": [
+        " 2dBi, dual polarization for enhanced signal reception",
+        "Ceiling mount design minimizes signal blind areas with double polarization",
+        "Features dual high-performance RF transceiver chips for fast reading speed and stability",
+        "Suitable for indoor attendance, access control, goods logistics tracking, and asset inventory management"
+      ],
+      "technical_features": [
+        "Constructed from durable ABS plastic",
+        "Measures 92 x Φ110 mm and weighs 200g",
+        "Capable of reading from a radius of 20 cm to 80 m",
+        "Operates on 9V DC with a working current of 350 mA",
+        "Certified with CE and FCC for compliance and safety"
+      ],
+      "pdf_manual": "assets/img/AXG80/2.4 G-Hz Omni-directional RFID Reader (MR3102E).pdf"
+    },
+    {
+      "product_code": "AXG81",
+      "product_type": "Dashcam",
+      "product_name": "Bike Dashcam",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160116/axelguard/img/AXG81/Bike_dashcam.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160117/axelguard/img/AXG81/Bike_dashcam1.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160118/axelguard/img/AXG81/Bike_dashcam2.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160119/axelguard/img/AXG81/Bike_dashcam3.png"
+      ],
+      "features": [
+        "Supports dual-channel recording with 1080P at 30FPS on one channel and 720P at 30FPS on the second channel",
+        "Uses H.265/H.264 to encode and decode video, optimizing storage and transmission",
+        "Equipped with a Sony low-light sensor and a 135-degree wide-angle lens for clear footage, even in low light",
+        "Supports both Wi-Fi (optional 4G) and external GPS for real-time positioning and remote access",
+        "Allows users to preview footage, configure parameters, and manage recordings directly from a mobile app"
+      ],
+      "technical_features": [
+        "Sony 3MP low-light sensor with 135-degree wide-angle coverage",
+        " Supports two channels (1 x 1080P at 30FPS + 1 x 720P at 30FPS), with an optional external camera",
+        "Supports TF cards up to 256GB for manual or regular video recording",
+        "IP66 certified for protection against water and dust, suitable for outdoor use",
+        "Optional 4G/Wi-Fi for communication and GPS positioning, allowing flexibility in data management"
+      ],
+      "pdf_manual": "assets/img/AXG81/Bike_dashcam.pdf"
+    },
+    {
+      "product_code": "AXG82",
+      "product_type": "Dashcam",
+      "product_name": "2ch 4g+GPS Dashcam (MT95L)",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160120/axelguard/img/AXG82/2ch%204g%2BGPS%20Dashcam%20%28MT95L%291.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160122/axelguard/img/AXG82/2ch%204g%2BGPS%20Dashcam%20%28MT95L%292.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160123/axelguard/img/AXG82/WhatsApp%20Image%202024-10-01%20at%2016.28.39_ecf58f79.jpg"
+      ],
+      "features": [
+        "Supports simultaneous recording from two cameras, providing both front and rear coverage for comprehensive monitoring",
+        "Real-time GPS tracking and 4G communication for remote access, live tracking, and data uploading",
+        "Automatically overwrites old recordings when the storage is full, ensuring continuous footage capture without manual intervention",
+        "Equipped with infrared or low-light sensors for clear video recording, even in dark or low-light environments",
+        "Provides access to live footage, playback, and settings configuration via a dedicated mobile app"
+      ],
+      "technical_features": [
+        "1080P Full HD front camera and 720P secondary camera for clear video quality",
+        "Supports up to 256GB microSD card, providing ample space for high-quality video storage",
+        "Powered by a 12V/24V vehicle power supply, compatible with a wide range of vehicle types",
+        "Reliable operation in temperatures ranging from -20°C to 70°C, making it suitable for extreme weather conditions",
+        "IP66 waterproof rating, protecting the dashcam from rain, dust, and other environmental factors"
+      ],
+      "pdf_manual": "assets/img/AXG82/MT95L AI DASHCAM.pdf"
+    },
+    {
+      "product_code": "AXG83",
+      "product_type": "Dashcam",
+      "product_name": "4inch Andriod Dashcam",
+      "images": [
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160125/axelguard/img/AXG83/4inch%20andriod%20Dashcam.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160128/axelguard/img/AXG83/4inch%20andriod%20dashcam1.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160129/axelguard/img/AXG83/4inch%20andriod%20dashcam2.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160126/axelguard/img/AXG83/4inch%20andriod%20Dashcam3.jpg",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160127/axelguard/img/AXG83/4inch%20andriod%20Dashcam4.jpg"
+      ],
+      "features": [
+        "4-inch touchscreen provides clear and vibrant visuals, enhancing ease of navigation and playback",
+        "Access to a variety of Android apps with a user-friendly interface for seamless integration with other Android devices",
+        "Front and rear high-definition cameras with wide-angle lenses for comprehensive coverage of the road",
+        "Real-time GPS tracking with turn-by-turn navigation, route planning, and logging of driving history",
+        "Built-in Wi-Fi and Bluetooth allow for easy file transfers, sharing, and wireless updates"
+      ],
+      "technical_features": [
+        "4-inch touchscreen with 1080p Full HD recording capabilities for crisp image quality",
+        "Dual camera setup (front and rear) designed for high-definition recording and wide-angle viewing",
+        "Supports MicroSD cards up to 128GB for extensive video and data storage",
+        "Rechargeable battery with car charger support for continuous power while driving",
+        "Advanced safety alerts, including Lane Departure Warning System (LDWS), Forward Collision Warning System (FCWS), and Driver Fatigue Alert"
+      ],
+      "pdf_manual": "assets/img/AXG83/4Inch Android dashcam pdf.pdf"
+    }
+  ]
+}
