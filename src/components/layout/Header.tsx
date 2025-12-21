@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Phone, Mail } from "lucide-react";
-import { ThemeToggle } from "@/components/features/ThemeToggle";
+
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -116,7 +116,7 @@ export default function Header() {
           <Link href="/services" className="text-white hover:text-gray-300 font-bold transition-colors">Services</Link>
           <Link href="/blog" className="text-white hover:text-gray-300 font-bold transition-colors">Blog</Link>
           
-          {pathname?.startsWith('/blog') && <ThemeToggle />}
+
 
           <Link 
             href="/contact" 
@@ -182,6 +182,8 @@ export default function Header() {
           <Link href="/services" className="text-xl font-bold text-white hover:text-gray-300" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
           <Link href="/blog" className="text-xl font-bold text-white hover:text-gray-300" onClick={() => setIsMobileMenuOpen(false)}>Blog</Link>
           <Link href="/contact" className="text-xl font-bold text-white hover:text-gray-300" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
+          
+
         </div>
       )}
     </header>

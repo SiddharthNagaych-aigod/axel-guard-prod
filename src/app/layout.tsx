@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Roboto, Raleway, Poppins } from "next/font/google";
 import ChatBot from "@/components/features/ChatBot";
 import InquiryPopup from "@/components/features/InquiryPopup";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -34,20 +33,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
         className={`${roboto.variable} ${raleway.variable} ${poppins.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <ChatBot />
-          <InquiryPopup />
-        </ThemeProvider>
+        {children}
+        <ChatBot />
+        <InquiryPopup />
       </body>
     </html>
   );

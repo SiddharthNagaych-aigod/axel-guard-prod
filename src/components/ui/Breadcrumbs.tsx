@@ -8,7 +8,7 @@ type BreadcrumbItem = {
 
 export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
   return (
-    <nav aria-label="Breadcrumb" className="py-4 text-sm text-gray-500 mb-6">
+    <nav aria-label="Breadcrumb" className="py-4 text-sm text-white mb-6">
       <ol className="flex items-center gap-2">
         <li>
           <Link href="/" className="hover:text-[var(--accent-color)] transition-colors flex items-center gap-1">
@@ -18,13 +18,13 @@ export default function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
         </li>
         {items.map((item, index) => (
           <li key={index} className="flex items-center gap-2">
-            <ChevronRight size={14} className="text-gray-400" />
+            <ChevronRight size={14} className="text-white" />
             {item.href ? (
               <Link href={item.href} className="hover:text-[var(--accent-color)] transition-colors font-medium">
                 {item.label}
               </Link>
             ) : (
-              <span className="text-gray-900 dark:text-gray-100 font-semibold truncate max-w-[200px] md:max-w-none">
+              <span className="text-white font-semibold truncate max-w-[200px] md:max-w-none">
                 {item.label}
               </span>
             )}

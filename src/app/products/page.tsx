@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import content from "@/data/content.json";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import Pagination from "@/components/ui/Pagination";
+import ProductFilters from "@/components/products/ProductFilters";
 
 // Types for Product
 type Product = {
@@ -63,7 +64,7 @@ export default async function ProductsPage({
       <Header />
       
       {/* Page Title */}
-      <div className="bg-black text-white py-20 mt-[72px]">
+      <div className="hidden md:block bg-black text-white py-20 mt-[72px]">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-4">Our Products</h1>
            <p className="text-xl text-gray-300">
@@ -72,7 +73,7 @@ export default async function ProductsPage({
         </div>
       </div>
 
-      <main className="flex-grow py-16">
+      <main className="flex-grow pt-[70px] pb-8 md:py-16">
         <div className="container mx-auto px-4">
           <Breadcrumbs 
             items={[
@@ -81,39 +82,18 @@ export default async function ProductsPage({
             ]} 
           />
           
-          {/* Category Quick Links */}
-          <div className="flex flex-wrap gap-4 justify-center mb-12">
-            {[
-              { label: "All Products", val: undefined },
-              { label: "Mobile DVR", val: "mdvr" },
-              { label: "Dashcams", val: "dashcam" },
-              { label: "Cameras", val: "camera" },
-              { label: "RFID", val: "rfid" },
-              { label: "Accessories", val: "accessories" },
-            ].map((cat) => (
-              <Link 
-                key={cat.label} 
-                href={cat.val ? `/products?category=${cat.val}` : "/products"}
-                className={`px-6 py-2 rounded-full border transition-all font-medium ${
-                  (category === cat.val) || (!category && !cat.val)
-                    ? "bg-black text-white border-black shadow-md"
-                    : "bg-white text-black border-gray-200 hover:border-black hover:bg-gray-50"
-                }`}
-              >
-                {cat.label}
-              </Link>
-            ))}
-          </div>
+          {/* Filters */}
+          <ProductFilters activeCategory={filterCat} />
 
           {/* Product Grid */}
           {paginatedProducts.length > 0 ? (
             <>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
                 {paginatedProducts.map((product) => (
                   <Link 
                     key={product.product_code} 
                     href={`/products/${product.product_code}`}
-                    className="group bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-black transition-all duration-300 flex flex-col hover:shadow-lg"
+                    className="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:border-black hover:shadow-lg transition-all duration-300 flex flex-col"
                   >
                     <div className="relative h-64 bg-white p-4 flex items-center justify-center border-b border-gray-100">
                       {/* Image handling: fix path from assets/img to /assets/img and use first image */}

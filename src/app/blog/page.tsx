@@ -22,7 +22,7 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
     <div className="min-h-screen flex flex-col bg-white dark:bg-slate-950 transition-colors duration-300">
       <Header />
       
-      <main className="flex-grow pt-[140px] pb-20">
+      <main className="flex-grow pt-[100px] md:pt-[140px] pb-20">
         <div className="container mx-auto px-4 text-center">
            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 font-[family-name:var(--font-raleway)]">AxelGuard Insights</h1>
            <p className="text-slate-500 dark:text-slate-400 mb-16 text-lg max-w-2xl mx-auto font-[family-name:var(--font-roboto)]">Latest updates, news, and expert insights on vehicle safety, fleet management, and surveillance technology.</p>

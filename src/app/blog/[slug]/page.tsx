@@ -58,7 +58,7 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-[140px] pb-16 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 border-b border-transparent dark:border-white/5">
+      <section className="relative pt-[100px] md:pt-[140px] pb-16 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 border-b border-transparent dark:border-white/5">
         <div className="container mx-auto px-4 max-w-4xl text-center">
             <div className="flex justify-center mb-8">
               <Breadcrumbs 

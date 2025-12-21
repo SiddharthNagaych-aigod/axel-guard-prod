@@ -25,10 +25,10 @@ export default function ProductImageGallery({ images, productName }: ProductImag
   };
 
   return (
-    <div>
+    <div className="w-full min-w-0">
       {/* Main Image Area */}
       <div 
-        className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm mb-6 relative h-[400px] flex items-center justify-center cursor-crosshair z-20 group"
+        className="bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-2xl p-8 shadow-sm mb-6 relative h-[300px] sm:h-[400px] flex items-center justify-center cursor-crosshair z-20 group"
         ref={imgRef}
         onMouseEnter={() => setShowZoom(true)}
         onMouseLeave={() => setShowZoom(false)}
@@ -61,15 +61,15 @@ export default function ProductImageGallery({ images, productName }: ProductImag
       
       {/* Thumbnails */}
       {images.length > 1 && (
-        <div className="grid grid-cols-4 sm:grid-cols-5 gap-4">
+        <div className="flex w-full overflow-x-auto pb-2 gap-2 mt-4 snap-x md:grid md:grid-cols-5 md:overflow-visible md:pb-0 no-scrollbar touch-pan-x">
           {images.map((img, idx) => (
             <div 
               key={idx} 
               onClick={() => setSelectedImage(img)}
-              className={`bg-white p-2 border rounded-lg cursor-pointer transition-all h-20 relative ${
+              className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 w-20 md:w-auto snap-start cursor-pointer ${
                 selectedImage === img 
-                  ? "border-black ring-1 ring-black shadow-md" 
-                  : "border-gray-100 hover:border-black"
+                  ? "border-black dark:border-white ring-1 ring-black dark:ring-white shadow-md" 
+                  : "border-gray-100 dark:border-slate-700 hover:border-black dark:hover:border-white"
               }`}
             >
                <Image 

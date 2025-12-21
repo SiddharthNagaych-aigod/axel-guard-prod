@@ -7,8 +7,8 @@ export default function Footer() {
     <footer className="bg-black text-white pt-16 pb-8">
       {/* Newsletter Section */}
       <div className="container mx-auto px-4 mb-16">
-        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10">
-          <div className="md:w-1/2">
+        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10 overflow-hidden">
+          <div className="md:w-1/2 w-full text-center md:text-left">
             <h4 className="text-2xl font-bold mb-2 text-white">Share Your Enquiry With Us</h4>
             <p className="text-gray-400">Subscribe or send us a message to get the latest updates and quotes.</p>
           </div>

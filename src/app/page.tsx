@@ -56,7 +56,7 @@ export default function Home() {
         {/* Minimalist Product Categories */}
         <section className="py-24 bg-[var(--surface-color)]">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+            <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 md:mb-16 text-center md:text-left">
                <div className="max-w-xl">
                  <h2 className="text-3xl font-bold mb-4">Intelligent Solutions</h2>
                  <p className="text-gray-500 text-lg">Hardware designed for accuracy, durability, and performance.</p>
