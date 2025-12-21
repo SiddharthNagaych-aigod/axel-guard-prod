@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto, Raleway, Poppins } from "next/font/google";
+import ChatBot from "@/components/features/ChatBot";
+import InquiryPopup from "@/components/features/InquiryPopup";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -10,6 +12,7 @@ const roboto = Roboto({
 
 const raleway = Raleway({
   subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-raleway",
 });
 
@@ -35,6 +38,8 @@ export default function RootLayout({
         className={`${roboto.variable} ${raleway.variable} ${poppins.variable} antialiased`}
       >
         {children}
+        <ChatBot />
+        <InquiryPopup />
       </body>
     </html>
   );

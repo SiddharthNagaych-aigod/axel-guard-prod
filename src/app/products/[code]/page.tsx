@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import content from "@/data/content.json";
 import { CheckCircle, FileText, ChevronLeft } from "lucide-react";
+import ManualGate from "@/components/features/ManualGate";
 
 // Helper to find product
 const getProduct = (code: string) => {
@@ -117,13 +118,7 @@ export default async function ProductDetailPage({
                   Request Quote
                 </Link>
                 {product.pdf_manual && (
-                  <a 
-                    href={`/${product.pdf_manual}`} 
-                    target="_blank"
-                    className="flex items-center justify-center gap-2 border border-gray-300 px-8 py-4 rounded-lg font-medium hover:border-[var(--heading-color)] hover:text-[var(--heading-color)] transition-colors text-gray-600"
-                  >
-                    <FileText size={20} /> Download Manual
-                  </a>
+                  <ManualGate pdfUrl={`/${product.pdf_manual}`} />
                 )}
               </div>
 
