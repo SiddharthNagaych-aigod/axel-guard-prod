@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Filter, X, Check } from "lucide-react";
-import { useRouter } from "next/navigation";
+
 
 interface ProductFiltersProps {
   activeCategory?: string;
@@ -20,9 +20,8 @@ const categories = [
 
 export default function ProductFilters({ activeCategory }: ProductFiltersProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
 
-  const handleSelect = (val?: string) => {
+  const handleSelect = () => {
     setIsOpen(false);
     // Navigation is handled by Link, but we close the menu
   };
@@ -87,7 +86,7 @@ export default function ProductFilters({ activeCategory }: ProductFiltersProps) 
                   <Link
                     key={cat.label}
                     href={cat.val ? `/products?category=${cat.val}` : "/products"}
-                    onClick={() => handleSelect(cat.val)}
+                    onClick={handleSelect}
                     className={`flex items-center justify-between p-4 rounded-xl border transition-all ${
                        isActive 
                          ? "bg-black text-white border-black" 

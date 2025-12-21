@@ -2,15 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+
 import { Menu, X, ChevronDown, Phone, Mail } from "lucide-react";
 
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductDropdownOpen, setIsProductDropdownOpen] = useState(false);
-  const pathname = usePathname();
-
   // Navigation Links
   const navLinks = [
     { name: "Home", href: "/" },
@@ -50,6 +48,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
            {/* Using standard img tag for absolute stability and visibility */}
+           {/* eslint-disable-next-line @next/next/no-img-element */}
            <img 
              src="https://res.cloudinary.com/dyn049kt9/image/upload/v1766354509/axelguard/logo/axellogo.webp" 
              alt="AxelGuard Logo" 
