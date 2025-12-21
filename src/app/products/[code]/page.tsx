@@ -32,7 +32,7 @@ export default async function ProductDetailPage({
       <main className="flex-grow pt-[100px] pb-20">
         <div className="container mx-auto px-4">
           
-          {/* Breadcrumb / Back */}
+          {/* Breadcrumb / Backk */}
           <div className="mb-8">
             <Breadcrumbs 
               items={[
