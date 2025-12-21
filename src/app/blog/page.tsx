@@ -16,7 +16,7 @@ export default function BlogPage() {
 
            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
              {/* Placeholder Posts */}
-             {/* Blog Posts */}
+             {/* Blog Postsss */}
              {[
                {
                  id: 1,
