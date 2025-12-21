@@ -3,6 +3,7 @@ import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import content from "@/data/content.json";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 // Types for Product
 type Product = {
@@ -30,6 +31,12 @@ export default async function ProductsPage({
     if (!filterCat) return true;
     const type = product.product_type.toLowerCase();
     
+    // MDVR Subcategories
+    if (filterCat === "mdvr-basic") return type.includes("basic version mdvr");
+    if (filterCat === "mdvr-enhanced") return type.includes("enhanced version mdvr");
+    if (filterCat === "mdvr-ai") return type.includes("ai version mdvr");
+    
+    // Main Categories
     if (filterCat === "mdvr") return type.includes("mdvr");
     if (filterCat === "dashcam") return type.includes("dashcam");
     if (filterCat === "camera") return type.includes("camera") || type.includes("bullet") || type.includes("dome");
@@ -57,6 +64,12 @@ export default async function ProductsPage({
 
       <main className="flex-grow py-16">
         <div className="container mx-auto px-4">
+          <Breadcrumbs 
+            items={[
+              { label: "Products", href: filterCat ? "/products" : undefined },
+              ...(filterCat ? [{ label: filterCat.toUpperCase() }] : [])
+            ]} 
+          />
           
           {/* Category Quick Links */}
           <div className="flex flex-wrap gap-4 justify-center mb-12">
@@ -71,10 +84,10 @@ export default async function ProductsPage({
               <Link 
                 key={cat.label} 
                 href={cat.val ? `/products?category=${cat.val}` : "/products"}
-                className={`px-6 py-2 rounded-full border transition-all ${
+                className={`px-6 py-2 rounded-full border transition-all font-medium ${
                   (category === cat.val) || (!category && !cat.val)
-                    ? "bg-[var(--accent-color)] text-black border-[var(--accent-color)] shadow-md"
-                    : "bg-white text-black border-gray-200 hover:border-[var(--accent-color)] hover:text-[var(--accent-color)]"
+                    ? "bg-black text-white border-black shadow-md"
+                    : "bg-white text-black border-gray-200 hover:border-black hover:bg-gray-50"
                 }`}
               >
                 {cat.label}
@@ -89,9 +102,9 @@ export default async function ProductsPage({
                 <Link 
                   key={product.product_code} 
                   href={`/products/${product.product_code}`}
-                  className="group bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:border-gray-200 transition-all duration-300 flex flex-col"
+                  className="group bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-black transition-all duration-300 flex flex-col hover:shadow-lg"
                 >
-                  <div className="relative h-64 bg-gray-50 p-4 flex items-center justify-center">
+                  <div className="relative h-64 bg-white p-4 flex items-center justify-center border-b border-gray-100">
                     {/* Image handling: fix path from assets/img to /assets/img and use first image */}
                     <div className="relative w-full h-full"> 
                       <Image 
@@ -106,15 +119,15 @@ export default async function ProductsPage({
                   </div>
                   
                   <div className="p-6 flex-grow flex flex-col">
-                    <span className="text-xs font-bold text-[var(--accent-color)] uppercase tracking-wider mb-2 block">{product.product_type}</span>
-                    <h3 className="text-lg font-bold text-[var(--heading-color)] mb-3 group-hover:text-[var(--accent-color)] transition-colors line-clamp-2">
+                    <span className="text-xs font-bold text-black uppercase tracking-wider mb-2 block">{product.product_type}</span>
+                    <h3 className="text-lg font-bold text-black mb-3 group-hover:underline decoration-2 underline-offset-4 transition-all line-clamp-2">
                       {product.product_name}
                     </h3>
                     <p className="text-gray-500 text-sm mb-4 line-clamp-3 flex-grow">
                       {product.features?.[0] || "High performance vehicle safety solution."}
                     </p>
                     <div className="mt-auto">
-                      <span className="text-sm font-medium text-[var(--heading-color)] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                      <span className="text-sm font-bold text-black flex items-center gap-1 group-hover:gap-2 transition-all">
                         View Details &rarr;
                       </span>
                     </div>
@@ -125,7 +138,7 @@ export default async function ProductsPage({
           ) : (
             <div className="text-center py-20">
               <h3 className="text-xl font-bold text-gray-400">No products found in this category.</h3>
-              <Link href="/products" className="text-[var(--accent-color)] mt-4 inline-block hover:underline">View all products</Link>
+              <Link href="/products" className="text-black font-bold mt-4 inline-block hover:underline">View all products</Link>
             </div>
           )}
         </div>

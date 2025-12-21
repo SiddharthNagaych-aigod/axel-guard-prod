@@ -1,11 +1,12 @@
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import content from "@/data/content.json";
-import { CheckCircle, ChevronLeft } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import ManualGate from "@/components/features/ManualGate";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import ProductImageGallery from "@/components/products/ProductImageGallery";
 
 // Helper to find product
 const getProduct = (code: string) => {
@@ -33,44 +34,18 @@ export default async function ProductDetailPage({
           
           {/* Breadcrumb / Back */}
           <div className="mb-8">
-            <Link href="/products" className="text-gray-500 hover:text-[var(--accent-color)] flex items-center gap-2 transition-colors">
-              <ChevronLeft size={16} /> Back to Products
-            </Link>
+            <Breadcrumbs 
+              items={[
+                { label: "Products", href: "/products" },
+                { label: product.product_name }
+              ]} 
+            />
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16">
             
             {/* Image Section */}
-            <div>
-              <div className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm mb-6 relative h-[400px] flex items-center justify-center">
-                 <Image 
-                   src={product.images[0]}
-                   alt={product.product_name}
-                   fill
-                   className="object-contain"
-                   sizes="(max-width: 1024px) 100vw, 50vw"
-                   priority
-                   unoptimized
-                 />
-              </div>
-              
-              {/* Thumbnails */}
-              {product.images.length > 1 && (
-                <div className="grid grid-cols-4 sm:grid-cols-5 gap-4">
-                  {product.images.map((img, idx) => (
-                    <div key={idx} className="bg-white p-2 border border-gray-100 rounded-lg cursor-pointer hover:border-[var(--accent-color)] transition-colors h-20 relative">
-                       <Image 
-                         src={img}
-                         alt={`${product.product_name} view ${idx + 1}`}
-                         fill
-                         className="object-contain"
-                         unoptimized
-                       />
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+            <ProductImageGallery images={product.images} productName={product.product_name} />
 
             {/* Content Section */}
             <div>

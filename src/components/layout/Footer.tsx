@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone, Facebook, Twitter, Instagram, Linkedin, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import FooterForm from "./FooterForm";
 
 export default function Footer() {
   return (
@@ -12,19 +13,7 @@ export default function Footer() {
             <p className="text-gray-400">Subscribe or send us a message to get the latest updates and quotes.</p>
           </div>
           <div className="md:w-1/2 w-full">
-            <form className="flex gap-2">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
-                className="flex-1 px-4 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-white transition-colors"
-              />
-              <button 
-                type="button"
-                className="bg-white text-black hover:bg-gray-200 px-6 py-3 rounded-full font-bold transition-all duration-300 shadow-lg flex items-center gap-2"
-              >
-                Send <Send size={18} />
-              </button>
-            </form>
+            <FooterForm />
           </div>
         </div>
       </div>
@@ -57,8 +46,8 @@ export default function Footer() {
               <li><Link href="/" className="hover:text-white transition-colors flex items-center gap-2">Home</Link></li>
               <li><Link href="/about" className="hover:text-white transition-colors flex items-center gap-2">About us</Link></li>
               <li><Link href="/services" className="hover:text-white transition-colors flex items-center gap-2">Services</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors flex items-center gap-2">Terms of service</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors flex items-center gap-2">Privacy policy</Link></li>
+              <li><Link href="/terms-of-service" className="hover:text-white transition-colors flex items-center gap-2">Terms of service</Link></li>
+              <li><Link href="/privacy-policy" className="hover:text-white transition-colors flex items-center gap-2">Privacy policy</Link></li>
             </ul>
           </div>
 
