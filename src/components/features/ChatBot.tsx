@@ -33,7 +33,7 @@ export default function ChatBot() {
             
             <div className="p-6 bg-gray-50 flex-grow">
                <p className="text-sm text-gray-600 mb-4 bg-white p-3 rounded-lg rounded-tl-none shadow-sm inline-block">
-                 Hi! 👋 Have any issues or questions? Fill out the form below and we'll help you out!
+Hi! 👋 Have any issues or questions? Fill out the form below and we&apos;ll help you out!
                </p>
                <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
                   <NeoDoveForm 

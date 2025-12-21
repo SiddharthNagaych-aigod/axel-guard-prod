@@ -1,5 +1,7 @@
 "use server";
 
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function submitContactForm(prevState: any, formData: FormData) {
   const data = {
     name: formData.get("name") as string,

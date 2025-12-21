@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Shield, Target, Zap, Award, Search, PenTool, Truck, CheckSquare } from "lucide-react";
+import { Shield, Zap, Search, PenTool, Truck, CheckSquare } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 

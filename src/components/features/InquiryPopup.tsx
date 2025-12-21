@@ -50,7 +50,7 @@ export default function InquiryPopup() {
               <div className="text-center mb-6">
                 <p className="text-sm font-bold text-[var(--accent-color)] mb-2 uppercase tracking-wide">Get in Touch</p>
                 <h2 className="text-2xl font-bold mb-2">How can we help?</h2>
-                <p className="text-gray-500">Leave your details and we'll contact you instantly.</p>
+                <p className="text-gray-500">Leave your details and we&apos;ll contact you instantly.</p>
               </div>
               
               <NeoDoveForm 

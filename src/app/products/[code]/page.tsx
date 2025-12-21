@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import content from "@/data/content.json";
-import { CheckCircle, FileText, ChevronLeft } from "lucide-react";
+import { CheckCircle, ChevronLeft } from "lucide-react";
 import ManualGate from "@/components/features/ManualGate";
 
 // Helper to find product
