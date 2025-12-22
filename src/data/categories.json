@@ -35,6 +35,11 @@
         "name": "Indoor",
         "href": "/products?category=indoor",
         "val": "indoor"
+      },
+      {
+        "name": "Outdoor",
+        "href": "/products?category=outdoor",
+        "val": "outdoor"
       }
     ]
   },

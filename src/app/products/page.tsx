@@ -26,14 +26,17 @@ export const dynamic = 'force-dynamic';
 export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string; page?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-  const { category, page } = await searchParams;
+  const resolvedSearchParams = await searchParams;
+  const filterCat = resolvedSearchParams.category as string | undefined;
+  const page = resolvedSearchParams.page as string | undefined;
+
+  const type = ""; // Placeholder for type check helper usage... wait, the helper accesses 'type'. 
+  // The logic below defines matchesCategory which uses 'type' from the product passed to it.
   
-  // Normalize category for filtering (simple text matching)
-  const filterCat = category?.toLowerCase();
-  
-  const categories = getCategories();
+  const products = await getProducts();
+  const categories = await getCategories();
 
   // Helper to check if product matches category
   const matchesCategory = (product: Product) => {
@@ -41,8 +44,6 @@ export default async function ProductsPage({
     const type = product.product_type.toLowerCase();
     
     // 0. Legacy / Special Keys (Use loose matching as originally defined)
-    // These keys require loose matching because product types (e.g. "basic version mdvr") 
-    // don't strictly match category names (e.g. "Mobile DVR (MDVR)").
     const legacyKeys = [
         "mdvr", "mdvr-basic", "mdvr-enhanced", "mdvr-ai", 
         "dashcam", "camera", "rfid", "accessories"
@@ -58,10 +59,10 @@ export default async function ProductsPage({
         if (filterCat === "camera") return type.includes("camera") || type.includes("bullet") || type.includes("dome");
         if (filterCat === "rfid") return type.includes("rfid") || type.includes("tag") || type.includes("reader");
         if (filterCat === "accessories") return type.includes("monitor") || type.includes("accessories") || type.includes("cable") || type.includes("sensor");
-        return false; // Should not happen given the includes check, but safe fallback
+        return false; 
     }
 
-    // 1. Dynamic Strict Match for NEW Categories/Subcategories
+    // 1. Dynamic Strict Match
     const allCats = [
         ...categories, 
         ...categories.flatMap((c) => c.subcategories || [])
@@ -71,15 +72,12 @@ export default async function ProductsPage({
     const matchedCategory = (allCats as CatLike[]).find((c) => c.val === filterCat);
     
     if (matchedCategory) {
-        // Strict match: Product type must exactly match the category name
-        // This solves the issue where "Indoor" matches "Indoor Camera".
         return type === matchedCategory.name.toLowerCase();
     }
 
     return false;
   };
 
-  const products = getProducts();
   const filteredProducts = products.filter(matchesCategory);
   
   const currentPage = page ? parseInt(page) : 1;

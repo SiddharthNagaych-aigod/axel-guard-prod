@@ -1,6 +1,5 @@
 
-import fs from 'fs';
-import path from 'path';
+import { StorageUtil } from '@/lib/storage';
 
 export interface Product {
   product_code: string;
@@ -18,6 +17,7 @@ export interface Service {
   title: string;
   description: string;
   link?: string;
+  icon?: string;
 }
 
 export interface SubCategory {
@@ -39,29 +39,22 @@ export interface Content {
   clients: string[];
 }
 
-export const getContent = (): Content => {
-    const filePath = path.join(process.cwd(), 'src/data/content.json');
-    if (!fs.existsSync(filePath)) {
-        return { products: [], clients: [], services: [] };
-    }
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(fileContents);
+export const getContent = async (): Promise<Content> => {
+    const content = await StorageUtil.readJSON('content.json');
+    return content || { products: [], clients: [], services: [] };
 };
 
-export const getProducts = (): Product[] => {
-    const content = getContent();
+export const getProducts = async (): Promise<Product[]> => {
+    const content = await getContent();
     return content.products || [];
 };
 
-export const getClients = (): string[] => {
-    const content = getContent();
+export const getClients = async (): Promise<string[]> => {
+    const content = await getContent();
     return content.clients || [];
 };
 
-export const getCategories = (): Category[] => {
-    const filePath = path.join(process.cwd(), 'src/data/categories.json');
-    if (!fs.existsSync(filePath)) {
-        return [];
-    }
-    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+export const getCategories = async (): Promise<Category[]> => {
+    const categories = await StorageUtil.readJSON('categories.json');
+    return categories || [];
 };

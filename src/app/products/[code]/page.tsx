@@ -7,8 +7,8 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import ProductDetailManager from "@/components/products/ProductDetailManager";
 
 // Helper to find product
-const getProduct = (code: string) => {
-  const products = getProducts();
+const getProduct = async (code: string) => {
+  const products = await getProducts();
   return products.find((p) => p.product_code === code);
 };
 
@@ -20,7 +20,7 @@ export default async function ProductDetailPage({
   params: Promise<{ code: string }>;
 }) {
   const { code } = await params;
-  const product = getProduct(code);
+  const product = await getProduct(code);
 
   if (!product) {
     notFound();
@@ -51,12 +51,9 @@ export default async function ProductDetailPage({
   );
 }
 
-// Generate static params for all products (optional but good for SEO/Performance)
-// Note: With force-dynamic, this might be ignored for serving, but used for build? 
-// Actually if we want instant updates, we might skip this or keep it for initial build.
-// But ensuring the page is dynamic is key.
+// Generate static params
 export async function generateStaticParams() {
-  const products = getProducts();
+  const products = await getProducts();
   return products.map((product) => ({
     code: product.product_code,
   }));

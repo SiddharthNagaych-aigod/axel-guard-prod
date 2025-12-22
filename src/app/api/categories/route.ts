@@ -1,16 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-
-const categoriesPath = path.join(process.cwd(), 'src/data/categories.json');
+import { StorageUtil } from '@/lib/storage';
 
 export async function GET() {
   try {
-    if (!fs.existsSync(categoriesPath)) {
-        return NextResponse.json([]);
-    }
-    const categories = JSON.parse(fs.readFileSync(categoriesPath, 'utf8'));
-    return NextResponse.json(categories);
+    const categories = await StorageUtil.readJSON('categories.json');
+    return NextResponse.json(categories || []);
   } catch {
     return NextResponse.json({ error: 'Failed to load categories' }, { status: 500 });
   }
@@ -24,9 +18,13 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Invalid data format' }, { status: 400 });
     }
 
-    fs.writeFileSync(categoriesPath, JSON.stringify(categories, null, 2));
+    const success = await StorageUtil.writeJSON('categories.json', categories);
 
-    return NextResponse.json({ success: true, message: 'Categories updated successfully' });
+    if (success) {
+        return NextResponse.json({ success: true, message: 'Categories updated successfully' });
+    } else {
+        return NextResponse.json({ error: 'Failed to save categories storage' }, { status: 500 });
+    }
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: 'Failed to save categories' }, { status: 500 });

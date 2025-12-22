@@ -8,7 +8,7 @@ import { Activity, Radio, Cast, Camera, ShieldCheck, TrendingUp, Users } from "l
 
 export const dynamic = 'force-dynamic';
 
-export default function Home() {
+export default async function Home() {
   const categories = [
     { name: "Mobile DVR", icon: Activity, href: "/products?category=mdvr" },
     { name: "DashCam", icon: Radio, href: "/products?category=dashcam" },
@@ -16,7 +16,7 @@ export default function Home() {
     { name: "Camera", icon: Camera, href: "/products?category=camera" },
   ];
 
-  const clients = getClients();
+  const clients = await getClients();
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-black font-sans">

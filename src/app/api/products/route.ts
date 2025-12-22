@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-
-const contentPath = path.join(process.cwd(), 'src/data/content.json');
+import { StorageUtil } from '@/lib/storage';
 
 export async function GET() {
   try {
-    const content = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
+    const content = await StorageUtil.readJSON('content.json');
+    if (!content || !content.products) {
+        return NextResponse.json([]);
+    }
     // Sort products by 'order' field if available, otherwise keep as is
     const products = content.products.sort((a: { order?: number }, b: { order?: number }) => (a.order || 0) - (b.order || 0));
     return NextResponse.json(products);
@@ -24,16 +24,9 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Invalid data format' }, { status: 400 });
     }
 
-    const content = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
+    const content = await StorageUtil.readJSON('content.json') || {};
     
     // Deduplicate products based on product_code
-    // We use a Map to keep the last occurrence (assuming latest edit) or first?
-    // If client sends duplicates, usually the last one is the valid one if they were appended.
-    // But if they are just duplicates, it doesn't matter.
-    // Let's keep the FIRST occurrence to be safe against accidental appends, 
-    // OR if the user edited one, we hope it's the one we keep.
-    // However, if the client sends [Old, New], we want New.
-    // So distinct by product_code, keeping the LAST one found in the array.
     const seen = new Set();
     const uniqueProducts = [];
     // Iterate backwards to find latest
@@ -47,9 +40,14 @@ export async function POST(request: NextRequest) {
     
     content.products = uniqueProducts;
 
-    fs.writeFileSync(contentPath, JSON.stringify(content, null, 2));
+    const success = await StorageUtil.writeJSON('content.json', content);
 
-    return NextResponse.json({ success: true, message: 'Products updated successfully' });
+    if (success) {
+         return NextResponse.json({ success: true, message: 'Products updated successfully' });
+    } else {
+         return NextResponse.json({ error: 'Failed to save products storage' }, { status: 500 });
+    }
+
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: 'Failed to save products' }, { status: 500 });

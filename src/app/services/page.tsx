@@ -5,7 +5,9 @@ import { CheckCircle, Shield, Truck, BarChart } from "lucide-react";
 
 export const dynamic = 'force-dynamic';
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const content = await getContent();
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -22,7 +24,7 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4">
           
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            {getContent().services.map((service, idx) => (
+            {content.services.map((service, idx) => (
               <div key={idx} className="group bg-white border border-gray-200 p-10 hover:border-black transition-all duration-300 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col items-start">
                  <div className="w-16 h-16 bg-black text-white mb-8 flex items-center justify-center rounded-none transform group-hover:-translate-y-1 transition-transform duration-300">
                     {/* Icon Mapping */}
