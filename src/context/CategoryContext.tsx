@@ -4,15 +4,17 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 export type SubCategory = {
+  _id?: string;
   name: string;
   href: string;
-  val?: string;
+  val: string; // Required now
 };
 
 export type Category = {
+  _id?: string;
   name: string;
   href: string;
-  val?: string;
+  val: string; // Required now
   subcategories?: SubCategory[];
 };
 
@@ -31,7 +33,7 @@ export function CategoryProvider({ children }: { children: React.ReactNode }) {
 
   const fetchCategories = async () => {
     try {
-      const res = await fetch("/api/categories", { cache: "no-store" });
+      const res = await fetch("/api/categories", { cache: "no-store", headers: { 'Pragma': 'no-cache' } });
       const data = await res.json();
       setCategories(data);
     } catch (error) {
@@ -53,7 +55,8 @@ export function CategoryProvider({ children }: { children: React.ReactNode }) {
         body: JSON.stringify(newCategories),
       });
       if (res.ok) {
-        setCategories(newCategories);
+        // Fetch fresh data to get IDs
+        await fetchCategories();
         return true;
       }
     } catch (error) {

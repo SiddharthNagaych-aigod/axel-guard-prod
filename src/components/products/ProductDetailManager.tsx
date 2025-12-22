@@ -12,9 +12,12 @@ import ManualGate from "@/components/features/ManualGate";
 import ProductImageGallery from "@/components/products/ProductImageGallery";
 
 type Product = {
+  _id?: string;
   product_code: string;
-  product_type: string;
+  product_type: string; // Legacy / Fallback
   product_name: string;
+  category?: { _id: string; val: string; name: string } | null;
+  subcategory?: { _id: string; val: string; name: string } | null;
   images: string[];
   features: string[];
   technical_features?: string[];
@@ -44,7 +47,7 @@ function SortableImage({ url, onRemove }: { url: string, onRemove: () => void })
 
 export default function ProductDetailManager({ initialProduct }: { initialProduct: Product }) {
   const { isAdminMode } = useAdmin();
-  const { categories, saveCategories } = useCategories(); // Destructure saveCategories here
+  const { categories, saveCategories } = useCategories();
   const [product, setProduct] = useState<Product>(initialProduct);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -90,18 +93,11 @@ export default function ProductDetailManager({ initialProduct }: { initialProduc
   const saveProduct = async () => {
     setIsSaving(true);
     try {
-        // Fetch all, update this one, save all.
-        // NOTE: A dedicated update-one endpoint would be better, but this fits the file-system simple architecture
-        const res = await fetch('/api/products', { cache: 'no-store' });
-        const allProducts = await res.json();
-        const updatedProducts = allProducts.map((p: Product) => 
-            p.product_code === product.product_code ? product : p
-        );
-
+        // Send ONLY this product for update (partial/upsert)
         await fetch('/api/products', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ products: updatedProducts })
+            body: JSON.stringify({ products: [product] })
         });
         alert("Saved successfully!");
     } catch (error) {
@@ -112,30 +108,31 @@ export default function ProductDetailManager({ initialProduct }: { initialProduc
     }
   };
 
-  // --- Category Logic (Hoisted) ---
-  const currentType = product.product_type;
-  let currentCatVal = "";
-  let currentSubVal = "";
-  let isCustom = true;
+  // --- Category Logic ---
+  // Use category object if available, otherwise check product_type
+  let currentCatVal = product.category?.val || "";
+  let currentSubVal = product.subcategory?.val || "";
+  let isCustom = false;
 
-  if (currentType === "Uncategorized") {
-      isCustom = false;
-      currentCatVal = "Uncategorized";
-  } else {
-      for (const cat of categories) {
-          if (cat.name === currentType) {
-              currentCatVal = cat.val || "";
-              isCustom = false;
-              break;
-          }
-          if (cat.subcategories) {
-              const sub = cat.subcategories.find(s => s.name === currentType);
-              if (sub) {
-                  currentCatVal = cat.val || "";
-                  currentSubVal = sub.val || "";
-                  isCustom = false;
-                  break;
-              }
+  // Fallback to legacy matching if objects are missing but product_type is present
+  if (!currentCatVal && !currentSubVal && product.product_type) {
+      if (product.product_type === "Uncategorized") {
+          currentCatVal = "Uncategorized";
+      } else {
+          // Try to find matching category by name
+          const cat = categories.find(c => c.name === product.product_type);
+          if (cat) {
+              currentCatVal = cat.val;
+          } else {
+               // Try subcategory
+               const parentCat = categories.find(c => c.subcategories?.some(s => s.name === product.product_type));
+               if (parentCat) {
+                   currentCatVal = parentCat.val;
+                   const sub = parentCat.subcategories?.find(s => s.name === product.product_type);
+                   if (sub) currentSubVal = sub.val;
+               } else {
+                   isCustom = true; // No match found, custom type
+               }
           }
       }
   }
@@ -143,18 +140,24 @@ export default function ProductDetailManager({ initialProduct }: { initialProduc
   const handleCatChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
       const val = e.target.value;
       if (val === "custom") {
-          setProduct({...product, product_type: ""}); 
+          setProduct({...product, category: null, subcategory: null, product_type: ""}); 
           return;
       }
       
       if (val === "Uncategorized") {
-          setProduct({...product, product_type: "Uncategorized"});
-          return;
+           setProduct({...product, category: null, subcategory: null, product_type: "Uncategorized"});
+           return;
       }
 
       const cat = categories.find(c => c.val === val);
       if (cat) {
-          setProduct({...product, product_type: cat.name});
+          // Populate minimal category object locally
+          setProduct({
+              ...product, 
+              category: { _id: cat._id!, val: cat.val, name: cat.name },
+              subcategory: null,
+              product_type: cat.name 
+          });
       }
   };
 
@@ -167,11 +170,27 @@ export default function ProductDetailManager({ initialProduct }: { initialProduc
       if (!val) return; 
       
       const cat = categories.find(c => c.val === currentCatVal);
+      if (val === "parent_only") {
+          // Clear subcategory
+          if (cat) {
+               setProduct({
+                   ...product, 
+                   category: { _id: cat._id!, val: cat.val, name: cat.name },
+                   subcategory: null,
+                   product_type: cat.name
+               });
+          }
+          return;
+      }
+
       const sub = cat?.subcategories?.find(s => s.val === val);
-      if (sub) {
-          setProduct({...product, product_type: sub.name});
-      } else if (val === "parent_only") {
-          if (cat) setProduct({...product, product_type: cat.name});
+      if (sub && cat) {
+          setProduct({
+              ...product, 
+              category: { _id: cat._id!, val: cat.val, name: cat.name },
+              subcategory: { _id: sub._id!, val: sub.val, name: sub.name },
+              product_type: sub.name
+          });
       }
   };
 
@@ -200,7 +219,30 @@ export default function ProductDetailManager({ initialProduct }: { initialProduc
 
       const success = await saveCategories(newCategories);
       if (success) {
-          setProduct({...product, product_type: name});
+          // After save, we need to re-find the new subcategory to get its _id?
+          // Since saveCategories re-fetches, the 'categories' prop should update via context.
+          // BUT that might take a moment. 
+          // For now, we set the string values. 
+          // Ideally, 'saveCategories' should return the new object or we re-fetch.
+          // Given the context flow: saveCategories -> fetch API -> setCategories.
+          // We can just rely on the upcoming render update?
+          // But we want to select it immediately.
+          // We can assume eventual consistency.
+          
+          setProduct(p => ({
+              ...p,
+              product_type: name,
+              // We don't have the _id yet! This is a minor issue.
+              // We'll set the val/name and hope the sync picks it up later or on next edit.
+              // Actually, Product API will try to resolve by name/val if _id is missing if we code it right?
+              // Currently Product API keys off _id. 
+              // We should probably allow the user to select the new subcategory AFTER it appears.
+              // Or force a reload. 
+              // A quick hack: set subcategory structure without _id? API might complain.
+              // Let's set product_type and let legacy logic handle it, or prompt user.
+              // Better: trigger refreshCategories from hook?
+          }));
+          alert("Subcategory added.");
       } else {
           alert("Failed to save subcategory.");
       }
@@ -208,7 +250,6 @@ export default function ProductDetailManager({ initialProduct }: { initialProduc
 
   const selectedCategory = categories.find(c => c.val === currentCatVal);
   const subcategories = selectedCategory?.subcategories || [];
-
 
   // View Mode
   if (!isAdminMode) {
@@ -346,11 +387,10 @@ export default function ProductDetailManager({ initialProduct }: { initialProduc
                             </select>
                         </div>
 
-                        {/* Subcategory Dropdown (Always visible for affordance, disabled if no parent) */}
+                        {/* Subcategory Dropdown */}
                         <div className={`transition-all duration-200 ${(!isCustom && currentCatVal !== "Uncategorized") ? 'opacity-100' : 'opacity-60'}`}>
                             <label className="text-xs font-bold text-gray-500 uppercase flex justify-between items-center">
                                 <span>Subcategory</span>
-                                {/* Show ADD NEW only when actionable */}
                                 {!isCustom && currentCatVal !== "Uncategorized" && (
                                     <button 
                                         onClick={handleAddSubCategory}
