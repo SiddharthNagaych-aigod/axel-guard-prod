@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useAdmin } from "@/context/AdminContext";
-import { useCategories, Category, SubCategory } from "@/hooks/useCategories";
+import { useCategories, Category } from "@/hooks/useCategories";
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors, DragEndEvent } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, rectSortingStrategy, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { GripVertical, Plus, Trash2, Edit, Save, X } from "lucide-react";
+import { GripVertical, Plus, Trash2, Edit, X } from "lucide-react";
 
 // Types
 type Product = {
@@ -270,7 +270,7 @@ export default function ProductListingManager({ initialProducts }: { initialProd
 function CategoryManagerModal({ onClose }: { onClose: () => void }) {
     const { categories, saveCategories, refreshCategories } = useCategories();
     const [localCategories, setLocalCategories] = useState<Category[]>(categories);
-    const [expandedCat, setExpandedCat] = useState<string | null>(null);
+    // const [expandedCat, setExpandedCat] = useState<string | null>(null);
 
     // Sync when categories load
     useEffect(() => { setLocalCategories(categories); }, [categories]);

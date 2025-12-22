@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useAdmin } from "@/context/AdminContext";
-import { Settings, Lock, Unlock } from "lucide-react";
+import { Lock, Unlock } from "lucide-react";
 
 export default function AdminToggle() {
   const { isAdminMode, toggleAdminMode } = useAdmin();
@@ -17,7 +17,7 @@ export default function AdminToggle() {
     "b", "a"
   ];
   
-  const [inputSequence, setInputSequence] = useState<string[]>([]);
+  const [, setInputSequence] = useState<string[]>([]);
 
   useEffect(() => {
     // Check localStorage on mount
@@ -45,6 +45,7 @@ export default function AdminToggle() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!isVisible) return null;

@@ -8,9 +8,9 @@ export async function GET() {
   try {
     const content = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
     // Sort products by 'order' field if available, otherwise keep as is
-    const products = content.products.sort((a: any, b: any) => (a.order || 0) - (b.order || 0));
+    const products = content.products.sort((a: { order?: number }, b: { order?: number }) => (a.order || 0) - (b.order || 0));
     return NextResponse.json(products);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to load products' }, { status: 500 });
   }
 }

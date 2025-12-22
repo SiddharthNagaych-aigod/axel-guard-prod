@@ -8,7 +8,7 @@ export async function GET() {
   try {
     const posts = JSON.parse(fs.readFileSync(blogPath, 'utf8'));
     return NextResponse.json(posts);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to load blog posts' }, { status: 500 });
   }
 }

@@ -20,8 +20,8 @@ export async function POST(request: NextRequest) {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    const match = file.name.match(/\.([^.]+)$/);
-    const extension = match ? match[1] : '';
+    // const match = file.name.match(/\.([^.]+)$/);
+    // const extension = match ? match[1] : '';
 
     const result = await new Promise((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(

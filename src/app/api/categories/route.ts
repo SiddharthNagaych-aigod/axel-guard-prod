@@ -11,7 +11,7 @@ export async function GET() {
     }
     const categories = JSON.parse(fs.readFileSync(categoriesPath, 'utf8'));
     return NextResponse.json(categories);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to load categories' }, { status: 500 });
   }
 }

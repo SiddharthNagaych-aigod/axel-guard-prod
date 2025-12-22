@@ -7,7 +7,7 @@ import { useAdmin } from "@/context/AdminContext";
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors, DragEndEvent } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, rectSortingStrategy, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { GripVertical, Edit, Plus, Trash2 } from "lucide-react";
+import { GripVertical, Edit } from "lucide-react";
 
 type BlogPost = {
   id: string;

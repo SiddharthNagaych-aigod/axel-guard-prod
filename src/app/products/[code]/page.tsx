@@ -1,10 +1,8 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import content from "@/data/content.json";
-import { CheckCircle } from "lucide-react";
-import ManualGate from "@/components/features/ManualGate";
+
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import ProductDetailManager from "@/components/products/ProductDetailManager";
 

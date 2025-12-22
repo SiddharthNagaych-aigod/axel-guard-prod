@@ -7,7 +7,7 @@ import { useCategories } from "@/hooks/useCategories";
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors, DragEndEvent } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, rectSortingStrategy, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { GripVertical, Plus, Trash2, Save, Upload, X, CheckCircle } from "lucide-react";
+import { Save, Upload, X, CheckCircle } from "lucide-react";
 import ManualGate from "@/components/features/ManualGate";
 import ProductImageGallery from "@/components/products/ProductImageGallery";
 
