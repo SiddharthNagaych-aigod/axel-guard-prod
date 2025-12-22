@@ -40,25 +40,25 @@
     {
       "title": "Mobile DVR",
       "icon": "bi-activity",
-      "description": "Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.",
+      "description": "Advanced mobile digital video recording systems designed for comprehensive fleet surveillance, ensuring secure evidence storage and real-time vehicle monitoring.",
       "link": "service-details.html"
     },
     {
       "title": "DashCam",
       "icon": "bi-broadcast",
-      "description": "Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.",
+      "description": "High-definition dashboard cameras that capture critical on-road events, improving driver accountability and providing indisputable accident documentation.",
       "link": "service-details.html"
     },
     {
-      "title": "RFID",
+      "title": "RFID Solutions",
       "icon": "bi-easel",
-      "description": "Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.",
+      "description": "Intelligent RFID technology for automated vehicle identification, seamless asset tracking, and efficient inventory management across large operations.",
       "link": "service-details.html"
     },
     {
-      "title": "Camera",
+      "title": "Surveillance Cameras",
       "icon": "bi-bounding-box-circles",
-      "description": "Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.",
+      "description": "Robust, high-resolution cameras engineered for diverse environments, providing crystal-clear video quality for both indoor and outdoor vehicle monitoring.",
       "link": "service-details.html"
     }
   ],
