@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { StorageUtil } from '@/lib/storage';
 import { Content } from '@/lib/content';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const content = await StorageUtil.readJSON<Content>('content.json');

@@ -45,7 +45,8 @@ export class StorageUtil {
                 // then fetch the content. Or just fetch the URL if we know the pattern.
                 // Let's rely on constructing the URL for "raw" resources.
                 // Format: https://res.cloudinary.com/<cloud_name>/raw/upload/<public_id>
-                const url = `https://res.cloudinary.com/${process.env.CLOUD_NAME}/raw/upload/${publicId}`;
+                // Add timestamp to bypass Cloudinary CDN cache
+                const url = `https://res.cloudinary.com/${process.env.CLOUD_NAME}/raw/upload/${publicId}?t=${Date.now()}`;
                 
                 const res = await fetch(url, { cache: 'no-store' });
                 
