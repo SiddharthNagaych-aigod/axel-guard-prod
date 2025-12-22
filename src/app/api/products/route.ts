@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { StorageUtil } from '@/lib/storage';
+import { Content } from '@/lib/content';
 
 export async function GET() {
   try {
-    const content = await StorageUtil.readJSON('content.json');
+    const content = await StorageUtil.readJSON<Content>('content.json');
     if (!content || !content.products) {
         return NextResponse.json([]);
     }
@@ -24,7 +25,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Invalid data format' }, { status: 400 });
     }
 
-    const content = await StorageUtil.readJSON('content.json') || {};
+    const content = await StorageUtil.readJSON<Content>('content.json') || { products: [], services: [], clients: [] };
     
     // Deduplicate products based on product_code
     const seen = new Set();

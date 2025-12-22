@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { StorageUtil } from '@/lib/storage';
+import { Category } from '@/lib/content';
 
 export async function GET() {
   try {
-    const categories = await StorageUtil.readJSON('categories.json');
+    const categories = await StorageUtil.readJSON<Category[]>('categories.json');
     return NextResponse.json(categories || []);
   } catch {
     return NextResponse.json({ error: 'Failed to load categories' }, { status: 500 });

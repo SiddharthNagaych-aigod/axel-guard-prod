@@ -24,7 +24,7 @@ export class StorageUtil {
      * @param filename e.g. 'categories.json' or 'content.json'
      * @returns Parsed JSON object or array
      */
-    static async readJSON(filename: string): Promise<any> {
+    static async readJSON<T = unknown>(filename: string): Promise<T | null> {
         // always try local first for speed/fallback, or strictly cloud in prod?
         // STRATEGY: In prod, try getting from cloud. If 404, fallback to local (bundled) file and return it.
         // This acts as a "seed" for the cloud database.
@@ -50,7 +50,7 @@ export class StorageUtil {
                 const res = await fetch(url, { cache: 'no-store' });
                 
                 if (res.ok) {
-                    return await res.json();
+                    return await res.json() as T;
                 } else {
                     console.warn(`[Storage] Cloud file ${filename} not found (Status ${res.status}). Falling back to local/seed.`);
                 }
@@ -63,7 +63,7 @@ export class StorageUtil {
         // Local Filesystem (Dev or Prod Fallback)
         const filePath = path.join(DATA_DIR, filename);
         if (fs.existsSync(filePath)) {
-            return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            return JSON.parse(fs.readFileSync(filePath, 'utf8')) as T;
         }
         
         return null; // File doesn't exist anywhere
@@ -74,7 +74,7 @@ export class StorageUtil {
      * @param filename e.g. 'categories.json'
      * @param data Object or Array to save
      */
-    static async writeJSON(filename: string, data: any): Promise<boolean> {
+    static async writeJSON(filename: string, data: unknown): Promise<boolean> {
         if (IS_PROD) {
             try {
                 const publicId = `axelguard/data/${filename}`;

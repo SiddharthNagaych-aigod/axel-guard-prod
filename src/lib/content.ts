@@ -40,8 +40,8 @@ export interface Content {
 }
 
 export const getContent = async (): Promise<Content> => {
-    const content = await StorageUtil.readJSON('content.json');
-    return content || { products: [], clients: [], services: [] };
+    const content = await StorageUtil.readJSON<Content>('content.json');
+    return content || { products: [], services: [], clients: [] };
 };
 
 export const getProducts = async (): Promise<Product[]> => {
@@ -55,6 +55,6 @@ export const getClients = async (): Promise<string[]> => {
 };
 
 export const getCategories = async (): Promise<Category[]> => {
-    const categories = await StorageUtil.readJSON('categories.json');
+    const categories = await StorageUtil.readJSON<Category[]>('categories.json');
     return categories || [];
 };

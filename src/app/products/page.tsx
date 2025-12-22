@@ -26,14 +26,14 @@ export const dynamic = 'force-dynamic';
 export default async function ProductsPage({
   searchParams,
 }: {
+  
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-  const resolvedSearchParams = await searchParams;
-  const filterCat = resolvedSearchParams.category as string | undefined;
-  const page = resolvedSearchParams.page as string | undefined;
+  const { page, category: filterCat } = await searchParams as { [key: string]: string | undefined };
+  
+  // Note: searchParams is Promise<{ [key: string]: string | string[] | undefined }>
+  // but for our usage we expect strings.
 
-  const type = ""; // Placeholder for type check helper usage... wait, the helper accesses 'type'. 
-  // The logic below defines matchesCategory which uses 'type' from the product passed to it.
   
   const products = await getProducts();
   const categories = await getCategories();
