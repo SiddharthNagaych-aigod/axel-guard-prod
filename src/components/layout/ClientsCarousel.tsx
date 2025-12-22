@@ -3,15 +3,14 @@
 import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
 import Image from "next/image";
-import content from "@/data/content.json";
 
-export default function ClientsCarousel() {
+export default function ClientsCarousel({ clients }: { clients: string[] }) {
   const [emblaRef] = useEmblaCarousel({ loop: true, dragFree: true }, [
     AutoScroll({ speed: 1.5, stopOnInteraction: false, stopOnMouseEnter: true }),
   ]);
 
   // Clients from content.json are now Cloudinary URLs
-  const clients = content.clients || [];
+  // const clients = content.clients || [];
 
   if (clients.length === 0) return null;
 

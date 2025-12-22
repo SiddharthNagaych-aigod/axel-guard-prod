@@ -4,6 +4,7 @@ import ChatBot from "@/components/features/ChatBot";
 import InquiryPopup from "@/components/features/InquiryPopup";
 import "./globals.css";
 import { AdminProvider } from "@/context/AdminContext";
+import { CategoryProvider } from "@/context/CategoryContext";
 import AdminToggle from "@/components/admin/AdminToggle";
 
 const roboto = Roboto({
@@ -40,10 +41,12 @@ export default function RootLayout({
         className={`${roboto.variable} ${raleway.variable} ${poppins.variable} antialiased`}
       >
         <AdminProvider>
-          {children}
-          <ChatBot />
-          <InquiryPopup />
-          <AdminToggle />
+          <CategoryProvider>
+            {children}
+            <ChatBot />
+            <InquiryPopup />
+            <AdminToggle />
+          </CategoryProvider>
         </AdminProvider>
       </body>
     </html>

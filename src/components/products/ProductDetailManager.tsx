@@ -44,7 +44,7 @@ function SortableImage({ url, onRemove }: { url: string, onRemove: () => void })
 
 export default function ProductDetailManager({ initialProduct }: { initialProduct: Product }) {
   const { isAdminMode } = useAdmin();
-  const { categories } = useCategories();
+  const { categories, saveCategories } = useCategories(); // Destructure saveCategories here
   const [product, setProduct] = useState<Product>(initialProduct);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -92,7 +92,7 @@ export default function ProductDetailManager({ initialProduct }: { initialProduc
     try {
         // Fetch all, update this one, save all.
         // NOTE: A dedicated update-one endpoint would be better, but this fits the file-system simple architecture
-        const res = await fetch('/api/products');
+        const res = await fetch('/api/products', { cache: 'no-store' });
         const allProducts = await res.json();
         const updatedProducts = allProducts.map((p: Product) => 
             p.product_code === product.product_code ? product : p
@@ -111,6 +111,104 @@ export default function ProductDetailManager({ initialProduct }: { initialProduc
         setIsSaving(false);
     }
   };
+
+  // --- Category Logic (Hoisted) ---
+  const currentType = product.product_type;
+  let currentCatVal = "";
+  let currentSubVal = "";
+  let isCustom = true;
+
+  if (currentType === "Uncategorized") {
+      isCustom = false;
+      currentCatVal = "Uncategorized";
+  } else {
+      for (const cat of categories) {
+          if (cat.name === currentType) {
+              currentCatVal = cat.val || "";
+              isCustom = false;
+              break;
+          }
+          if (cat.subcategories) {
+              const sub = cat.subcategories.find(s => s.name === currentType);
+              if (sub) {
+                  currentCatVal = cat.val || "";
+                  currentSubVal = sub.val || "";
+                  isCustom = false;
+                  break;
+              }
+          }
+      }
+  }
+
+  const handleCatChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const val = e.target.value;
+      if (val === "custom") {
+          setProduct({...product, product_type: ""}); 
+          return;
+      }
+      
+      if (val === "Uncategorized") {
+          setProduct({...product, product_type: "Uncategorized"});
+          return;
+      }
+
+      const cat = categories.find(c => c.val === val);
+      if (cat) {
+          setProduct({...product, product_type: cat.name});
+      }
+  };
+
+  const handleSubChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const val = e.target.value;
+      if (val === "add_new") {
+          handleAddSubCategory();
+          return;
+      }
+      if (!val) return; 
+      
+      const cat = categories.find(c => c.val === currentCatVal);
+      const sub = cat?.subcategories?.find(s => s.val === val);
+      if (sub) {
+          setProduct({...product, product_type: sub.name});
+      } else if (val === "parent_only") {
+          if (cat) setProduct({...product, product_type: cat.name});
+      }
+  };
+
+  const handleAddSubCategory = async () => {
+      const cat = categories.find(c => c.val === currentCatVal);
+      if (!cat) return;
+
+      const name = prompt(`Enter new subcategory name for ${cat.name}:`);
+      if (!name) return;
+      
+      const val = name.toLowerCase().replace(/\s+/g, '-');
+      
+      if (cat.subcategories?.some(s => s.val === val)) {
+          alert("Subcategory already exists!");
+          return;
+      }
+
+      const newSub = { name, href: `/products?category=${val}`, val };
+      
+      const newCategories = categories.map(c => {
+          if (c.val === currentCatVal) {
+              return { ...c, subcategories: [...(c.subcategories || []), newSub] };
+          }
+          return c;
+      });
+
+      const success = await saveCategories(newCategories);
+      if (success) {
+          setProduct({...product, product_type: name});
+      } else {
+          alert("Failed to save subcategory.");
+      }
+  };
+
+  const selectedCategory = categories.find(c => c.val === currentCatVal);
+  const subcategories = selectedCategory?.subcategories || [];
+
 
   // View Mode
   if (!isAdminMode) {
@@ -229,38 +327,72 @@ export default function ProductDetailManager({ initialProduct }: { initialProduc
                 </div>
                 <div>
                     <label className="block text-sm font-bold text-gray-700">Type / Category</label>
-                    <div className="flex flex-col gap-2">
-                         <select 
-                            value={product.product_type} 
-                            onChange={e => setProduct({...product, product_type: e.target.value})}
-                            className="w-full border p-2 rounded bg-white"
-                         >
-                            <option value="">Select a Category...</option>
-                            {/* Uncategorized Option */}
-                            <option value="Uncategorized">Uncategorized</option>
-                            
-                            {categories.map(cat => (
-                                <optgroup key={cat.val} label={cat.name}>
-                                    <option value={cat.name}>{cat.name} (Main)</option>
-                                    {cat.subcategories?.map(sub => (
-                                        <option key={sub.val} value={sub.name}>
-                                            &nbsp;&nbsp;&nbsp;{sub.name}
-                                        </option>
-                                    ))}
-                                </optgroup>
-                            ))}
-                         </select>
-                         
-                         <div className="flex items-center gap-2">
-                             <span className="text-xs text-gray-500">Or type custom:</span>
-                             <input 
-                                type="text" 
-                                value={product.product_type} 
-                                onChange={e => setProduct({...product, product_type: e.target.value})}
-                                className="border p-1 rounded text-sm flex-grow"
-                                placeholder="Custom Type"
-                             />
-                         </div>
+                    
+                    {/* Category Selection UI */}
+                    <div className="flex flex-col gap-3 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        {/* Main Category Dropdown */}
+                        <div>
+                            <label className="text-xs font-bold text-gray-500 uppercase">Main Category</label>
+                            <select 
+                                value={isCustom ? "custom" : currentCatVal} 
+                                onChange={handleCatChange}
+                                className="w-full border p-2 rounded bg-white mt-1"
+                            >
+                                <option value="Uncategorized">Uncategorized</option>
+                                {categories.map(cat => (
+                                    <option key={cat.val} value={cat.val}>{cat.name}</option>
+                                ))}
+                                <option value="custom">Custom (Type Manually)</option>
+                            </select>
+                        </div>
+
+                        {/* Subcategory Dropdown (Always visible for affordance, disabled if no parent) */}
+                        <div className={`transition-all duration-200 ${(!isCustom && currentCatVal !== "Uncategorized") ? 'opacity-100' : 'opacity-60'}`}>
+                            <label className="text-xs font-bold text-gray-500 uppercase flex justify-between items-center">
+                                <span>Subcategory</span>
+                                {/* Show ADD NEW only when actionable */}
+                                {!isCustom && currentCatVal !== "Uncategorized" && (
+                                    <button 
+                                        onClick={handleAddSubCategory}
+                                        className="text-[10px] bg-black text-white px-2 py-0.5 rounded hover:bg-gray-800"
+                                    >
+                                        + ADD NEW
+                                    </button>
+                                )}
+                            </label>
+                            <select 
+                                disabled={isCustom || currentCatVal === "Uncategorized"}
+                                value={(!isCustom && currentCatVal !== "Uncategorized") ? (currentSubVal || (subcategories.some(s => s.name === product.product_type) ? "" : "parent_only")) : "placeholder"}
+                                onChange={handleSubChange}
+                                className="w-full border p-2 rounded bg-white mt-1 border-blue-200 text-blue-800 font-medium disabled:bg-gray-100 disabled:text-gray-400 disabled:border-gray-200"
+                            >
+                                {isCustom || currentCatVal === "Uncategorized" ? (
+                                    <option value="placeholder">Select a Main Category first...</option>
+                                ) : (
+                                    <>
+                                        <option value="parent_only">-- No Subcategory ({selectedCategory?.name}) --</option>
+                                        {subcategories.map(sub => (
+                                            <option key={sub.val} value={sub.val}>{sub.name}</option>
+                                        ))}
+                                        <option value="add_new" className="font-bold text-blue-600">+ Create New Subcategory...</option>
+                                    </>
+                                )}
+                            </select>
+                        </div>
+
+                        {/* Custom Input Fallback */}
+                        {isCustom && (
+                            <div>
+                                 <label className="text-xs font-bold text-gray-500 uppercase">Custom Type Name</label>
+                                 <input 
+                                    type="text" 
+                                    value={product.product_type === "Uncategorized" ? "" : product.product_type} 
+                                    onChange={e => setProduct({...product, product_type: e.target.value})}
+                                    className="w-full border p-2 rounded mt-1"
+                                    placeholder="Enter custom product type..."
+                                 />
+                            </div>
+                        )}
                     </div>
                 </div>
 

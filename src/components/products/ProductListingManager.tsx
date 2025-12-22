@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { useAdmin } from "@/context/AdminContext";
 import { useCategories, Category } from "@/hooks/useCategories";
@@ -88,10 +89,56 @@ export default function ProductListingManager({ initialProducts }: { initialProd
     })
   );
 
+  const searchParams = useSearchParams();
+  const category = searchParams.get('category');
+  const filterCat = category?.toLowerCase();
+
+  // Get active categories from hook to use for dynamic matching
+  const { categories } = useCategories();
+
+  const matchesCategory = (product: Product) => {
+    if (!filterCat) return true;
+    const type = product.product_type.toLowerCase();
+
+    // 0. Legacy / Special Keys
+    const legacyKeys = [
+        "mdvr", "mdvr-basic", "mdvr-enhanced", "mdvr-ai", 
+        "dashcam", "camera", "rfid", "accessories"
+    ];
+
+    if (legacyKeys.includes(filterCat)) {
+        if (filterCat === "mdvr-basic") return type.includes("basic version mdvr");
+        if (filterCat === "mdvr-enhanced") return type.includes("enhanced version mdvr");
+        if (filterCat === "mdvr-ai") return type.includes("ai version mdvr");
+        
+        if (filterCat === "mdvr") return type.includes("mdvr");
+        if (filterCat === "dashcam") return type.includes("dashcam");
+        if (filterCat === "camera") return type.includes("camera") || type.includes("bullet") || type.includes("dome");
+        if (filterCat === "rfid") return type.includes("rfid") || type.includes("tag") || type.includes("reader");
+        if (filterCat === "accessories") return type.includes("monitor") || type.includes("accessories") || type.includes("cable") || type.includes("sensor");
+        return false;
+    }
+    
+    // 1. Dynamic Strict Match
+    const allCats = [
+        ...categories, 
+        ...categories.flatMap(c => c.subcategories || [])
+    ];
+    const matchedCategory = allCats.find(c => c.val === filterCat);
+
+    if (matchedCategory) {
+        return type === matchedCategory.name.toLowerCase();
+    }
+    
+    return false;
+  };
+
+  const visibleProducts = isAdminMode ? products.filter(matchesCategory) : initialProducts;
+
   useEffect(() => {
     // If Admin Mode, fetch fresh list to ensure correct order
     if (isAdminMode) {
-      fetch('/api/products')
+      fetch('/api/products', { cache: 'no-store' })
         .then(res => res.json())
         .then(data => setProducts(data))
         .catch(err => console.error("Failed to fetch products", err));
@@ -184,7 +231,7 @@ export default function ProductListingManager({ initialProducts }: { initialProd
     // Render Standard Grid
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-        {initialProducts.map((product) => (
+        {visibleProducts.map((product) => (
           <Link 
             key={product.product_code} 
             href={`/products/${product.product_code}`}
@@ -249,9 +296,9 @@ export default function ProductListingManager({ initialProducts }: { initialProd
       </div>
 
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-        <SortableContext items={products.map(p => p.product_code)} strategy={rectSortingStrategy}>
+        <SortableContext items={visibleProducts.map(p => p.product_code)} strategy={rectSortingStrategy}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {products.map((product) => (
+            {visibleProducts.map((product) => (
               <SortableProductCard 
                 key={product.product_code} 
                 product={product} 

@@ -25,7 +25,27 @@ export async function POST(request: NextRequest) {
     }
 
     const content = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
-    content.products = products;
+    
+    // Deduplicate products based on product_code
+    // We use a Map to keep the last occurrence (assuming latest edit) or first?
+    // If client sends duplicates, usually the last one is the valid one if they were appended.
+    // But if they are just duplicates, it doesn't matter.
+    // Let's keep the FIRST occurrence to be safe against accidental appends, 
+    // OR if the user edited one, we hope it's the one we keep.
+    // However, if the client sends [Old, New], we want New.
+    // So distinct by product_code, keeping the LAST one found in the array.
+    const seen = new Set();
+    const uniqueProducts = [];
+    // Iterate backwards to find latest
+    for (let i = products.length - 1; i >= 0; i--) {
+        const p = products[i];
+        if (!seen.has(p.product_code)) {
+            seen.add(p.product_code);
+            uniqueProducts.unshift(p);
+        }
+    }
+    
+    content.products = uniqueProducts;
 
     fs.writeFileSync(contentPath, JSON.stringify(content, null, 2));
 

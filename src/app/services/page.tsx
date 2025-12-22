@@ -1,7 +1,9 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import content from "@/data/content.json";
+import { getContent } from "@/lib/content";
 import { CheckCircle, Shield, Truck, BarChart } from "lucide-react";
+
+export const dynamic = 'force-dynamic';
 
 export default function ServicesPage() {
   return (
@@ -20,7 +22,7 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4">
           
           <div className="grid gap-12">
-            {content.services.map((service, idx) => (
+            {getContent().services.map((service, idx) => (
               <div key={idx} className="bg-white border border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow flex flex-col md:flex-row gap-8 items-start">
                  <div className="w-full md:w-1/3 h-64 bg-[var(--surface-color)] rounded-xl flex items-center justify-center text-[var(--accent-color)]">
                     {/* Placeholder mapping based on title or random icon */}

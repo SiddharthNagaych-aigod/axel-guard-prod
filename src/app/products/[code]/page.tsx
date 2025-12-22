@@ -1,15 +1,18 @@
 import { notFound } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import content from "@/data/content.json";
+import { getProducts } from "@/lib/content";
 
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import ProductDetailManager from "@/components/products/ProductDetailManager";
 
 // Helper to find product
 const getProduct = (code: string) => {
-  return content.products.find((p) => p.product_code === code);
+  const products = getProducts();
+  return products.find((p) => p.product_code === code);
 };
+
+export const dynamic = 'force-dynamic';
 
 export default async function ProductDetailPage({
   params,
@@ -49,8 +52,12 @@ export default async function ProductDetailPage({
 }
 
 // Generate static params for all products (optional but good for SEO/Performance)
+// Note: With force-dynamic, this might be ignored for serving, but used for build? 
+// Actually if we want instant updates, we might skip this or keep it for initial build.
+// But ensuring the page is dynamic is key.
 export async function generateStaticParams() {
-  return content.products.map((product) => ({
+  const products = getProducts();
+  return products.map((product) => ({
     code: product.product_code,
   }));
 }

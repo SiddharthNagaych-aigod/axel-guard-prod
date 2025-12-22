@@ -97,16 +97,17 @@
   "products": [
     {
       "product_code": "AXG11",
-      "product_type": "Outdoor Bullet camera",
+      "product_type": "Camera",
       "product_name": "Bullet Camera",
       "images": [
         "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159883/axelguard/img/AXG11/Outdoor%20Bullet%20camera.png",
         "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159885/axelguard/img/AXG11/outdoor%20bullet%20camera1.png",
         "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159884/axelguard/img/AXG11/outdoor%20Bullet%20camera2.png",
-        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159886/axelguard/img/AXG11/outdoor%20bullet%20camera4.png"
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159886/axelguard/img/AXG11/outdoor%20bullet%20camera4.png",
+        "https://res.cloudinary.com/dyn049kt9/image/upload/v1766404288/axelguard/products/AXG11/tum1njdbwhuvsfpfn1zp.png"
       ],
       "features": [
-        "Equipped with IR for night vision, ensuring visibility in low light or darkness",
+        "Equipped with Ir for night vision, ensuring visibility in low light or darkness",
         "IP66/IP67-rated housing for protection against rain, dust, and harsh environments",
         "Offers broad coverage, suitable for monitoring large areas",
         "Adjustable and durable mount for easy installation on vehicles or outdoor setups"
@@ -309,7 +310,7 @@
     },
     {
       "product_code": "AXG10",
-      "product_type": "Indoor Dome Camera",
+      "product_type": "Indoor",
       "product_name": "Dome Camera",
       "images": [
         "https://res.cloudinary.com/dyn049kt9/image/upload/v1766159879/axelguard/img/AXG10/indoor%20Dome%20camera.png",
@@ -1303,7 +1304,7 @@
     },
     {
       "product_code": "AXG78",
-      "product_type": "Dashcam camera",
+      "product_type": "Dashcam",
       "product_name": "4K Monitor Kit Camera",
       "images": [
         "https://res.cloudinary.com/dyn049kt9/image/upload/v1766160109/axelguard/img/AXG78/4k%20Monitor%20Camera.png",

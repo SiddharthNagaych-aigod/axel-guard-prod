@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import content from "@/data/content.json";
+import { getProducts, getCategories } from "@/lib/content";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import Pagination from "@/components/ui/Pagination";
 import ProductFilters from "@/components/products/ProductFilters";
@@ -21,6 +21,8 @@ type Product = {
 
 const PRODUCTS_PER_PAGE = 12;
 
+export const dynamic = 'force-dynamic';
+
 export default async function ProductsPage({
   searchParams,
 }: {
@@ -30,28 +32,55 @@ export default async function ProductsPage({
   
   // Normalize category for filtering (simple text matching)
   const filterCat = category?.toLowerCase();
+  
+  const categories = getCategories();
 
   // Helper to check if product matches category
   const matchesCategory = (product: Product) => {
     if (!filterCat) return true;
     const type = product.product_type.toLowerCase();
     
-    // MDVR Subcategories
-    if (filterCat === "mdvr-basic") return type.includes("basic version mdvr");
-    if (filterCat === "mdvr-enhanced") return type.includes("enhanced version mdvr");
-    if (filterCat === "mdvr-ai") return type.includes("ai version mdvr");
+    // 0. Legacy / Special Keys (Use loose matching as originally defined)
+    // These keys require loose matching because product types (e.g. "basic version mdvr") 
+    // don't strictly match category names (e.g. "Mobile DVR (MDVR)").
+    const legacyKeys = [
+        "mdvr", "mdvr-basic", "mdvr-enhanced", "mdvr-ai", 
+        "dashcam", "camera", "rfid", "accessories"
+    ];
+
+    if (legacyKeys.includes(filterCat)) {
+        if (filterCat === "mdvr-basic") return type.includes("basic version mdvr");
+        if (filterCat === "mdvr-enhanced") return type.includes("enhanced version mdvr");
+        if (filterCat === "mdvr-ai") return type.includes("ai version mdvr");
+        
+        if (filterCat === "mdvr") return type.includes("mdvr");
+        if (filterCat === "dashcam") return type.includes("dashcam");
+        if (filterCat === "camera") return type.includes("camera") || type.includes("bullet") || type.includes("dome");
+        if (filterCat === "rfid") return type.includes("rfid") || type.includes("tag") || type.includes("reader");
+        if (filterCat === "accessories") return type.includes("monitor") || type.includes("accessories") || type.includes("cable") || type.includes("sensor");
+        return false; // Should not happen given the includes check, but safe fallback
+    }
+
+    // 1. Dynamic Strict Match for NEW Categories/Subcategories
+    const allCats = [
+        ...categories, 
+        ...categories.flatMap((c) => c.subcategories || [])
+    ];
     
-    // Main Categories
-    if (filterCat === "mdvr") return type.includes("mdvr");
-    if (filterCat === "dashcam") return type.includes("dashcam");
-    if (filterCat === "camera") return type.includes("camera") || type.includes("bullet") || type.includes("dome");
-    if (filterCat === "rfid") return type.includes("rfid") || type.includes("tag") || type.includes("reader");
-    if (filterCat === "accessories") return type.includes("monitor") || type.includes("accessories") || type.includes("cable") || type.includes("sensor");
+    interface CatLike { val: string; name: string; }
+    const matchedCategory = (allCats as CatLike[]).find((c) => c.val === filterCat);
     
-    return true;
+    if (matchedCategory) {
+        // Strict match: Product type must exactly match the category name
+        // This solves the issue where "Indoor" matches "Indoor Camera".
+        return type === matchedCategory.name.toLowerCase();
+    }
+
+    return false;
   };
 
-  const filteredProducts = content.products.filter(matchesCategory);
+  const products = getProducts();
+  const filteredProducts = products.filter(matchesCategory);
   
   const currentPage = page ? parseInt(page) : 1;
   const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);

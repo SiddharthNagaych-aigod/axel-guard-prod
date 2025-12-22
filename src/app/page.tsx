@@ -2,8 +2,11 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/layout/Hero";
 import ClientsCarousel from "@/components/layout/ClientsCarousel";
+import { getClients } from "@/lib/content";
 import Link from "next/link";
 import { Activity, Radio, Cast, Camera, ShieldCheck, TrendingUp, Users } from "lucide-react";
+
+export const dynamic = 'force-dynamic';
 
 export default function Home() {
   const categories = [
@@ -12,6 +15,8 @@ export default function Home() {
     { name: "RFID", icon: Cast, href: "/products?category=rfid" },
     { name: "Camera", icon: Camera, href: "/products?category=camera" },
   ];
+
+  const clients = getClients();
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-black font-sans">
@@ -86,7 +91,7 @@ export default function Home() {
         </section>
 
         {/* Clients Section */}
-        <ClientsCarousel />
+        <ClientsCarousel clients={clients} />
 
         {/* Simplified "Why Choose Us" / Footer Lead-in */}
         <section className="py-16 md:py-24 bg-black text-white text-center">
