@@ -9,6 +9,7 @@ export async function submitLead(data: {
   subject?: string;
   message?: string;
   source?: string;
+  customUrl?: string;
 }) {
   console.log("-----------------------------------------");
   console.log("🚀 [Server Action] submitLead called");

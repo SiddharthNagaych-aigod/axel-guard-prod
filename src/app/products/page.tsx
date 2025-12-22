@@ -6,6 +6,7 @@ import content from "@/data/content.json";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import Pagination from "@/components/ui/Pagination";
 import ProductFilters from "@/components/products/ProductFilters";
+import ProductListingManager from "@/components/products/ProductListingManager";
 
 // Types for Product
 type Product = {
@@ -85,61 +86,24 @@ export default async function ProductsPage({
           {/* Filters */}
           <ProductFilters activeCategory={filterCat} />
 
-          {/* Product Grid */}
-          {paginatedProducts.length > 0 ? (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-                {paginatedProducts.map((product) => (
-                  <Link 
-                    key={product.product_code} 
-                    href={`/products/${product.product_code}`}
-                    className="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:border-black hover:shadow-lg transition-all duration-300 flex flex-col"
-                  >
-                    <div className="relative h-64 bg-white p-4 flex items-center justify-center border-b border-gray-100">
-                      {/* Image handling: fix path from assets/img to /assets/img and use first image */}
-                      <div className="relative w-full h-full"> 
-                        <Image 
-                          src={product.images[0]} 
-                          alt={product.product_name}
-                          fill
-                          className="object-contain group-hover:scale-105 transition-transform duration-300"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          unoptimized
-                        />
-                      </div>
-                    </div>
-                    
-                    <div className="p-6 flex-grow flex flex-col">
-                      <span className="text-xs font-bold text-black uppercase tracking-wider mb-2 block">{product.product_type}</span>
-                      <h3 className="text-lg font-bold text-black mb-3 group-hover:underline decoration-2 underline-offset-4 transition-all line-clamp-2">
-                        {product.product_name}
-                      </h3>
-                      <p className="text-gray-500 text-sm mb-4 line-clamp-3 flex-grow">
-                        {product.features?.[0] || "High performance vehicle safety solution."}
-                      </p>
-                      <div className="mt-auto">
-                        <span className="text-sm font-bold text-black flex items-center gap-1 group-hover:gap-2 transition-all">
-                          View Details &rarr;
-                        </span>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Pagination */}
+          {/* Product Listing Manager handles display and reordering */}
+          <ProductListingManager initialProducts={paginatedProducts} />
+          
+          {/* Pagination (visible if items exist) */}
+          {paginatedProducts.length > 0 && (
               <Pagination 
                 currentPage={currentPage}
                 totalPages={totalPages}
                 baseUrl="/products"
                 searchParams={{ category: filterCat }}
               />
-            </>
-          ) : (
-            <div className="text-center py-20">
-              <h3 className="text-xl font-bold text-gray-400">No products found in this category.</h3>
-              <Link href="/products" className="text-black font-bold mt-4 inline-block hover:underline">View all products</Link>
-            </div>
+          )}
+
+          {paginatedProducts.length === 0 && (
+             <div className="text-center py-20">
+               <h3 className="text-xl font-bold text-gray-400">No products found in this category.</h3>
+               <Link href="/products" className="text-black font-bold mt-4 inline-block hover:underline">View all products</Link>
+             </div>
           )}
         </div>
       </main>

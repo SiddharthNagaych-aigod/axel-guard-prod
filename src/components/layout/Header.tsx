@@ -6,30 +6,19 @@ import Link from "next/link";
 import { Menu, X, ChevronDown, Phone, Mail } from "lucide-react";
 
 
+import { useCategories } from "@/hooks/useCategories";
+
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductDropdownOpen, setIsProductDropdownOpen] = useState(false);
+  const { categories: productCategories } = useCategories();
   // Navigation Links
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
   ];
 
-  const productCategories = [
-    { 
-      name: "Mobile DVR (MDVR)", 
-      href: "/products?category=mdvr",
-      subcategories: [
-        { name: "Basic version MDVR", href: "/products?category=mdvr-basic" },
-        { name: "Enhanced Version MDVR", href: "/products?category=mdvr-enhanced" },
-        { name: "AI Version MDVR", href: "/products?category=mdvr-ai" },
-      ]
-    },
-    { name: "Dashcam", href: "/products?category=dashcam" },
-    { name: "Camera", href: "/products?category=camera" },
-    { name: "RFID", href: "/products?category=rfid" },
-    { name: "Accessories", href: "/products?category=accessories" },
-  ];
+  // Products categories are now fetched via useCategories hook above
 
   return (
     <header className="fixed w-full top-0 z-50 transition-all duration-300 bg-black/95 backdrop-blur-md shadow-sm border-b border-white/10">

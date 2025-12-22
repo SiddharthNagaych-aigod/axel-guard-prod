@@ -5,10 +5,11 @@ export async function submitToNeoDove(data: {
   subject?: string;
   message?: string;
   source?: string;
+  customUrl?: string;
 }) {
   // The full URL including the unique subdomain and integration ID
   // Example: https://9badee52...neodove.com/integration/custom/ce0c.../leads
-  const ENDPOINT_URL = process.env.NEODOVE_URL;
+  const ENDPOINT_URL = data.customUrl || process.env.NEODOVE_URL;
   
   if (!ENDPOINT_URL) {
     console.error("NEODOVE_URL is missing in environment variables.");

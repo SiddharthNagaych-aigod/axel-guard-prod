@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Mobile DVR (MDVR)",
+        "href": "/products?category=mdvr",
+        "val": "mdvr",
+        "subcategories": [
+            {
+                "name": "Basic version MDVR",
+                "href": "/products?category=mdvr-basic",
+                "val": "mdvr-basic"
+            },
+            {
+                "name": "Enhanced Version MDVR",
+                "href": "/products?category=mdvr-enhanced",
+                "val": "mdvr-enhanced"
+            },
+            {
+                "name": "AI Version MDVR",
+                "href": "/products?category=mdvr-ai",
+                "val": "mdvr-ai"
+            }
+        ]
+    },
+    {
+        "name": "Dashcam",
+        "href": "/products?category=dashcam",
+        "val": "dashcam"
+    },
+    {
+        "name": "Camera",
+        "href": "/products?category=camera",
+        "val": "camera"
+    },
+    {
+        "name": "RFID",
+        "href": "/products?category=rfid",
+        "val": "rfid"
+    },
+    {
+        "name": "Accessories",
+        "href": "/products?category=accessories",
+        "val": "accessories"
+    }
+]

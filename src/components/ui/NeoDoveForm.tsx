@@ -10,6 +10,7 @@ interface NeoDoveFormProps {
   className?: string;
   showSubject?: boolean;
   showMessageBox?: boolean;
+  customUrl?: string;
 }
 
 export default function NeoDoveForm({ 
@@ -17,7 +18,8 @@ export default function NeoDoveForm({
   source = "Website", 
   className = "",
   showSubject = false,
-  showMessageBox = false
+  showMessageBox = false,
+  customUrl
 }: NeoDoveFormProps) {
   const [isPending, setIsPending] = useState(false);
   const [status, setStatus] = useState<{ success?: boolean; message?: string } | null>(null);
@@ -35,6 +37,7 @@ export default function NeoDoveForm({
       subject: showSubject ? (formData.get("subject") as string) : undefined,
       message: showMessageBox ? (formData.get("message") as string) : undefined,
       source: source,
+      customUrl: customUrl,
     };
 
     try {

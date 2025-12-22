@@ -3,6 +3,8 @@ import { Roboto, Raleway, Poppins } from "next/font/google";
 import ChatBot from "@/components/features/ChatBot";
 import InquiryPopup from "@/components/features/InquiryPopup";
 import "./globals.css";
+import { AdminProvider } from "@/context/AdminContext";
+import AdminToggle from "@/components/admin/AdminToggle";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -37,9 +39,12 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} ${raleway.variable} ${poppins.variable} antialiased`}
       >
-        {children}
-        <ChatBot />
-        <InquiryPopup />
+        <AdminProvider>
+          {children}
+          <ChatBot />
+          <InquiryPopup />
+          <AdminToggle />
+        </AdminProvider>
       </body>
     </html>
   );

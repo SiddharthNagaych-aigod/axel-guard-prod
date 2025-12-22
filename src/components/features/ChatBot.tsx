@@ -37,9 +37,11 @@ Hi! 👋 Have any issues or questions? Fill out the form below and we&apos;ll he
                </p>
                <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
                   <NeoDoveForm 
-                    source="Chatbot" 
+                    source="Chatbot (Complaint)" 
                     onSuccess={() => setTimeout(() => setIsOpen(false), 3000)}
                     showMessageBox={true}
+                    // Updated to Complaint Integration URL
+                    customUrl="https://9badee52-4d9c-4d54-813e-38638c4db7ee.neodove.com/integration/custom/591d29f7-12f2-4004-ac70-3f9ca10615ad/leads"
                   />
                </div>
             </div>
@@ -48,7 +50,7 @@ Hi! 👋 Have any issues or questions? Fill out the form below and we&apos;ll he
       </AnimatePresence>
 
       <motion.div 
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-4"
+        className="fixed bottom-8 right-6 z-50 flex items-center gap-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1 }}

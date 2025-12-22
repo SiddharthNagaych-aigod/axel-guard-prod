@@ -5,21 +5,20 @@ import Link from "next/link";
 import { Filter, X, Check } from "lucide-react";
 
 
+import { useCategories } from "@/hooks/useCategories";
+
 interface ProductFiltersProps {
   activeCategory?: string;
 }
 
-const categories = [
-  { label: "All Products", val: undefined },
-  { label: "Mobile DVR", val: "mdvr" },
-  { label: "Dashcams", val: "dashcam" },
-  { label: "Cameras", val: "camera" },
-  { label: "RFID", val: "rfid" },
-  { label: "Accessories", val: "accessories" },
-];
-
 export default function ProductFilters({ activeCategory }: ProductFiltersProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const { categories: rawCategories } = useCategories();
+
+  const categories = [
+    { label: "All Products", val: undefined },
+    ...rawCategories.map(c => ({ label: c.name, val: c.val })),
+  ];
 
   const handleSelect = () => {
     setIsOpen(false);
