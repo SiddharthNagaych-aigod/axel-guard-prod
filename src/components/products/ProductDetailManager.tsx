@@ -248,6 +248,35 @@ export default function ProductDetailManager({ initialProduct }: { initialProduc
       }
   };
 
+  // Manual PDF Upload Handler
+  const handleManualUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files?.length) return;
+    const file = e.target.files[0];
+    
+    // Validate PDF
+    if (file.type !== 'application/pdf') {
+        alert("Only PDF files are allowed.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('folder', `axelguard/manuals/${product.product_code}`);
+
+    try {
+        const res = await fetch('/api/upload', { method: 'POST', body: formData });
+        const data = await res.json();
+        
+        if (data.secure_url) {
+            setProduct(p => ({ ...p, pdf_manual: data.secure_url }));
+            alert("Manual uploaded successfully!");
+        }
+    } catch (err) {
+        console.error("Manual upload failed", err);
+        alert("Upload failed");
+    }
+  };
+
   const selectedCategory = categories.find(c => c.val === currentCatVal);
   const subcategories = selectedCategory?.subcategories || [];
 
@@ -312,8 +341,16 @@ export default function ProductDetailManager({ initialProduct }: { initialProduc
                 >
                   Request Quote
                 </a>
+                
+                {/* Manual Gate - Only shows if URL exists */}
                 {product.pdf_manual && (
-                  <ManualGate pdfUrl={`/${product.pdf_manual}`} />
+                  <ManualGate 
+                    pdfUrl={
+                        product.pdf_manual.startsWith('http') || product.pdf_manual.startsWith('/') 
+                        ? product.pdf_manual 
+                        : `/${product.pdf_manual}`
+                    } 
+                  />
                 )}
               </div>
             </div>
@@ -348,11 +385,39 @@ export default function ProductDetailManager({ initialProduct }: { initialProduc
                     </SortableContext>
                 </DndContext>
                 
-                <div className="relative">
+                <div className="relative mb-8">
                     <input type="file" id="img-upload" className="hidden" onChange={handleUpload} accept="image/*" />
                     <label htmlFor="img-upload" className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
                         <Upload size={16} /> Upload Image
                     </label>
+                </div>
+
+                {/* PDF Manual Section */}
+                <div className="bg-white p-4 rounded-lg border border-gray-200">
+                   <label className="block font-bold mb-2">Product Manual (PDF)</label>
+                   
+                   {product.pdf_manual ? (
+                       <div className="flex items-center justify-between bg-blue-50 p-3 rounded text-sm text-blue-800 mb-2">
+                           <a href={product.pdf_manual} target="_blank" rel="noopener noreferrer" className="underline truncate max-w-[200px]">
+                               {product.pdf_manual}
+                           </a>
+                           <button 
+                             onClick={() => setProduct(p => ({ ...p, pdf_manual: undefined }))}
+                             className="text-red-500 hover:text-red-700 ml-4 font-bold"
+                           >
+                            Remove
+                           </button>
+                       </div>
+                   ) : (
+                       <p className="text-sm text-gray-500 mb-2">No manual uploaded.</p>
+                   )}
+
+                   <div className="relative">
+                       <input type="file" id="pdf-upload" className="hidden" onChange={handleManualUpload} accept="application/pdf" />
+                       <label htmlFor="pdf-upload" className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 text-sm">
+                           <Upload size={14} /> {product.pdf_manual ? "Replace PDF" : "Upload PDF"}
+                       </label>
+                   </div>
                 </div>
             </div>
 
