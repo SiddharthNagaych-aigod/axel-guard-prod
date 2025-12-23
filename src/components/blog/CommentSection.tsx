@@ -61,7 +61,7 @@ export default function CommentSection({ slug, initialComments }: CommentSection
                 <div>
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-bold text-slate-900 dark:text-white">{comment.name}</span>
-                    <span className="text-xs text-slate-400">• {new Date(comment.date).toLocaleDateString()}</span>
+                    <span className="text-xs text-slate-400">• {new Date(comment.date).toLocaleDateString('en-GB')}</span>
                   </div>
                   <p className="text-slate-600 dark:text-slate-300 leading-relaxed font-[family-name:var(--font-roboto)]">{comment.content}</p>
                 </div>

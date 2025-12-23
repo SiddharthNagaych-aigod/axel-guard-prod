@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto, Raleway, Poppins } from "next/font/google";
 import ChatBot from "@/components/features/ChatBot";
 import InquiryPopup from "@/components/features/InquiryPopup";
+import WhatsAppButton from "@/components/features/WhatsAppButton";
 import "./globals.css";
 import { AdminProvider } from "@/context/AdminContext";
 import { CategoryProvider } from "@/context/CategoryContext";
@@ -26,8 +27,15 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "AxelGuard",
-  description: "Leaders in vehicle safety systems",
+  title: "AxelGuard Brand of RealTrack Technology",
+  description: "Axel-Guard specializes in MDVR systems, dashcams, vehicle cameras, and fuel sensors for fleet safety and management. Offering advanced AI-powered solutions for comprehensive vehicle security.",
+  openGraph: {
+    title: "AxelGuard Brand of RealTrack Technology",
+    description: "Axel-Guard specializes in MDVR systems, dashcams, vehicle cameras, and fuel sensors for fleet safety and management.",
+    type: "website",
+    locale: "en_US",
+    siteName: "AxelGuard",
+  }
 };
 
 export default function RootLayout({
@@ -45,6 +53,7 @@ export default function RootLayout({
             {children}
             <ChatBot />
             <InquiryPopup />
+            <WhatsAppButton />
             <AdminToggle />
           </CategoryProvider>
         </AdminProvider>
