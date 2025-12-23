@@ -3,15 +3,19 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Filter, X, Check } from "lucide-react";
-import { useCategories } from "@/context/CategoryContext";
+import { Category, useCategories } from "@/context/CategoryContext";
 
 interface ProductFiltersProps {
   activeCategory?: string;
+  categories?: Category[];
 }
 
-export default function ProductFilters({ activeCategory }: ProductFiltersProps) {
+export default function ProductFilters({ activeCategory, categories: propCategories }: ProductFiltersProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const { categories: rawCategories } = useCategories();
+  const { categories: contextCategories } = useCategories();
+  
+  // Use passed categories if available (server data), otherwise context
+  const rawCategories = propCategories && propCategories.length > 0 ? propCategories : contextCategories;
 
   const categories = [
     { label: "All Products", val: undefined },

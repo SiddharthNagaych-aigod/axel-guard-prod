@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
@@ -10,6 +10,8 @@ import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, us
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, rectSortingStrategy, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { GripVertical, Plus, Trash2, Edit, X } from "lucide-react";
+import ProductFilters from "./ProductFilters";
+import Pagination from "../ui/Pagination";
 
 // Types
 type Product = {
@@ -22,6 +24,8 @@ type Product = {
   price?: string;
   order?: number;
 };
+
+const PRODUCTS_PER_PAGE = 12;
 
 // Sortable Item Component
 function SortableProductCard({ product, onDelete }: { product: Product, onDelete: (code: string) => void }) {
@@ -76,7 +80,12 @@ function SortableProductCard({ product, onDelete }: { product: Product, onDelete
   );
 }
 
-export default function ProductListingManager({ initialProducts }: { initialProducts: Product[] }) {
+interface ProductListingManagerProps {
+    initialProducts: Product[];
+    initialCategories: Category[];
+}
+
+export default function ProductListingManager({ initialProducts, initialCategories }: ProductListingManagerProps) {
   const { isAdminMode } = useAdmin();
   const [products, setProducts] = useState<Product[]>(initialProducts);
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
@@ -91,12 +100,35 @@ export default function ProductListingManager({ initialProducts }: { initialProd
 
   const searchParams = useSearchParams();
   const category = searchParams.get('category');
+  const pageParam = searchParams.get('page');
+  
   const filterCat = category?.toLowerCase();
+  const currentPage = pageParam ? parseInt(pageParam) : 1;
 
   // Get active categories from hook to use for dynamic matching
-  const { categories } = useCategories();
+  // Use initialCategories if hook is loading or empty (server data fallback)
+  const { categories: contextCategories } = useCategories();
+  const categories = contextCategories.length > 0 ? contextCategories : initialCategories;
 
-  const matchesCategory = (product: Product) => {
+  useEffect(() => {
+    // Sync local products if initialProducts changes (e.g. revalidation)
+    // Only if NOT in admin mode (Admin mode manages its own state via fetch/DnD)
+    if (!isAdminMode) {
+        setProducts(initialProducts);
+    }
+  }, [initialProducts, isAdminMode]);
+
+  // Admin Mode: Fetch fresh list to ensure correct order
+  useEffect(() => {
+    if (isAdminMode) {
+      fetch('/api/products', { cache: 'no-store' })
+        .then(res => res.json())
+        .then(data => setProducts(data))
+        .catch(err => console.error("Failed to fetch products", err));
+    }
+  }, [isAdminMode]);
+
+  const matchesCategory = useCallback((product: Product) => {
     if (!filterCat) return true;
     const type = product.product_type.toLowerCase();
 
@@ -124,28 +156,32 @@ export default function ProductListingManager({ initialProducts }: { initialProd
         ...categories, 
         ...categories.flatMap(c => c.subcategories || [])
     ];
-    const matchedCategory = allCats.find(c => c.val === filterCat);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const matchedCategory = (allCats as any[]).find(c => c.val === filterCat);
 
     if (matchedCategory) {
         return type === matchedCategory.name.toLowerCase();
     }
     
     return false;
-  };
+  }, [filterCat, categories]);
 
-  const visibleProducts = isAdminMode ? products.filter(matchesCategory) : initialProducts;
+  // Filter products
+  // Memoize to avoid re-filtering on every render if inputs didn't change
+  const filteredProducts = useMemo(() => {
+      // In Admin Mode, current 'products' state is the source (handled by DnD)
+      // In User Mode, 'products' state is sync'd with initialProducts
+      return products.filter(matchesCategory);
+  }, [products, filterCat, categories]);
 
-  useEffect(() => {
-    // If Admin Mode, fetch fresh list to ensure correct order
-    if (isAdminMode) {
-      fetch('/api/products', { cache: 'no-store' })
-        .then(res => res.json())
-        .then(data => setProducts(data))
-        .catch(err => console.error("Failed to fetch products", err));
-    } else {
-        setProducts(initialProducts);
-    }
-  }, [isAdminMode, initialProducts]);
+  // Pagination Logic
+  const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
+  const paginatedProducts = useMemo(() => {
+      return filteredProducts.slice(
+        (currentPage - 1) * PRODUCTS_PER_PAGE, 
+        currentPage * PRODUCTS_PER_PAGE
+      );
+  }, [filteredProducts, currentPage]);
 
   const handleDragEnd = async (event: DragEndEvent) => {
     const { active, over } = event;
@@ -228,46 +264,71 @@ export default function ProductListingManager({ initialProducts }: { initialProd
   };
 
   if (!isAdminMode) {
-    // Render Standard Grid
+    // Render Standard Grid with Filters and Pagination
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-        {visibleProducts.map((product) => (
-          <Link 
-            key={product.product_code} 
-            href={`/products/${product.product_code}`}
-            className="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:border-black hover:shadow-lg transition-all duration-300 flex flex-col"
-          >
-            <div className="relative h-64 bg-white p-4 flex items-center justify-center border-b border-gray-100">
-              <div className="relative w-full h-full"> 
-                <Image 
-                  src={product.images[0] || '/placeholder.jpg'} 
-                  alt={product.product_name}
-                  fill
-                  className="object-contain group-hover:scale-105 transition-transform duration-300"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  unoptimized
-                />
-              </div>
+        <div>
+           {/* Filters */}
+           <ProductFilters activeCategory={filterCat} categories={categories} />
+           
+           {/* Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 min-h-[400px]">
+                {paginatedProducts.map((product) => (
+                <Link 
+                    key={product.product_code} 
+                    href={`/products/${product.product_code}`}
+                    className="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:border-black hover:shadow-lg transition-all duration-300 flex flex-col"
+                >
+                    <div className="relative h-64 bg-white p-4 flex items-center justify-center border-b border-gray-100">
+                    <div className="relative w-full h-full"> 
+                        <Image 
+                        src={product.images[0] || '/placeholder.jpg'} 
+                        alt={product.product_name}
+                        fill
+                        className="object-contain group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        unoptimized
+                        />
+                    </div>
+                    </div>
+                    
+                    <div className="p-6 flex-grow flex flex-col">
+                    <span className="text-xs font-bold text-black uppercase tracking-wider mb-2 block">{product.product_type}</span>
+                    <h3 className="text-lg font-bold text-black mb-3 group-hover:underline decoration-2 underline-offset-4 transition-all line-clamp-2">
+                        {product.product_name}
+                    </h3>
+                    <p className="text-gray-500 text-sm mb-4 line-clamp-3 flex-grow">
+                        {product.features?.[0] || "High performance vehicle safety solution."}
+                    </p>
+                    <div className="mt-auto">
+                        {product.price && <span className="block text-lg font-bold text-blue-600 mb-2">{product.price}</span>}
+                        <span className="text-sm font-bold text-black flex items-center gap-1 group-hover:gap-2 transition-all">
+                        View Details &rarr;
+                        </span>
+                    </div>
+                    </div>
+                </Link>
+                ))}
             </div>
             
-            <div className="p-6 flex-grow flex flex-col">
-              <span className="text-xs font-bold text-black uppercase tracking-wider mb-2 block">{product.product_type}</span>
-              <h3 className="text-lg font-bold text-black mb-3 group-hover:underline decoration-2 underline-offset-4 transition-all line-clamp-2">
-                {product.product_name}
-              </h3>
-              <p className="text-gray-500 text-sm mb-4 line-clamp-3 flex-grow">
-                {product.features?.[0] || "High performance vehicle safety solution."}
-              </p>
-              <div className="mt-auto">
-                 {product.price && <span className="block text-lg font-bold text-blue-600 mb-2">{product.price}</span>}
-                <span className="text-sm font-bold text-black flex items-center gap-1 group-hover:gap-2 transition-all">
-                  View Details &rarr;
-                </span>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+            {/* Empty State */}
+            {paginatedProducts.length === 0 && (
+                 <div className="text-center py-20">
+                   <h3 className="text-xl font-bold text-gray-400">No products found in this category.</h3>
+                   <Link href="/products" className="text-black font-bold mt-4 inline-block hover:underline">View all products</Link>
+                 </div>
+            )}
+
+            {/* Pagination */}
+            {paginatedProducts.length > 0 && (
+                <Pagination 
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    baseUrl="/products"
+                    // Pass current search params except page to preserve them
+                    searchParams={Object.fromEntries(searchParams)}
+                />
+            )}
+        </div>
     );
   }
 
@@ -294,11 +355,23 @@ export default function ProductListingManager({ initialProducts }: { initialProd
             </button>
         </div>
       </div>
+      
+      {/* Filters in Admin for Easier Management ? Optional. 
+          Currently Admin view shows ALL items unless we want to support filtering there too.
+          But DnD usually implies a global order. 
+          If we filter in admin, we can't drag product A to position 1 if position 1 is hidden.
+          So Admin View usually shows EVERYTHING or handles filtering differently.
+          The previous code filtered visibleProducts. 
+          Let's keep filtering for Admin but be aware DnD might be weird if filtered.
+          Actually, SortableContext needs the items present.
+      */}
+      
+      <ProductFilters activeCategory={filterCat} categories={categories} />
 
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-        <SortableContext items={visibleProducts.map(p => p.product_code)} strategy={rectSortingStrategy}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {visibleProducts.map((product) => (
+        <SortableContext items={filteredProducts.map(p => p.product_code)} strategy={rectSortingStrategy}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6">
+            {filteredProducts.map((product) => (
               <SortableProductCard 
                 key={product.product_code} 
                 product={product} 
