@@ -14,6 +14,50 @@ const getProduct = async (code: string) => {
 
 export const dynamic = 'force-dynamic';
 
+export async function generateMetadata({ params }: { params: Promise<{ code: string }> }) {
+  const { code } = await params;
+  const product = await getProduct(code);
+
+  if (!product) {
+    return {
+      title: "Product Not Found",
+    };
+  }
+
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://axel-guard.com";
+  const productUrl = `${siteUrl}/products/${code}`;
+  const imageUrl = product.images?.[0] || "";
+
+  return {
+    title: `${product.product_name} | AxelGuard Products`,
+    description: product.features?.[0] || `Detail view for ${product.product_name}`,
+    alternates: {
+        canonical: productUrl,
+    },
+    openGraph: {
+        title: product.product_name,
+        description: product.features?.[0] || `AxelGuard Product: ${product.product_name}`,
+        url: productUrl,
+        siteName: 'AxelGuard',
+        images: [
+            {
+                url: imageUrl,
+                width: 800,
+                height: 600,
+                alt: product.product_name,
+            }
+        ],
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: product.product_name,
+        description: product.features?.[0],
+        images: [imageUrl],
+    },
+  };
+}
+
 export default async function ProductDetailPage({
   params,
 }: {

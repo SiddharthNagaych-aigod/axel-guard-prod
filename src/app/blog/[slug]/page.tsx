@@ -34,11 +34,41 @@ export async function generateMetadata({ params }: BlogPostProps) {
     };
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = post as any;
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://axel-guard.com";
+  const postUrl = `${siteUrl}/blog/${slug}`;
+
   return {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    title: `${(post as any).title} | AxelGuard Blog`,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    description: (post as any).excerpt,
+    title: `${p.title} | AxelGuard Blog`,
+    description: p.excerpt,
+    alternates: {
+        canonical: postUrl,
+    },
+    openGraph: {
+        title: p.title,
+        description: p.excerpt,
+        url: postUrl,
+        siteName: 'AxelGuard',
+        images: [
+            {
+                url: p.image, // Assuming image is a full URL or relative path handled by metadata (Cloudinary usually full)
+                width: 1200,
+                height: 630,
+                alt: p.title,
+            }
+        ],
+        locale: 'en_US',
+        type: 'article',
+        publishedTime: p.date.toISOString(),
+        authors: [p.author],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: p.title,
+        description: p.excerpt,
+        images: [p.image],
+    },
   };
 }
 
