@@ -2,7 +2,7 @@ import mongoose, { Schema, Document, Model } from 'mongoose';
 
 export interface IProduct extends Document {
   product_code: string;
-  name: string; // product_name
+  name: string; // product_namee
   product_type: string; // Legacy field, might be useful to keep for reference?
   category: mongoose.Types.ObjectId;
   subcategory?: mongoose.Types.ObjectId;
