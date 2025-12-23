@@ -10,6 +10,7 @@ export async function submitContactForm(prevState: any, formData: FormData) {
     subject: formData.get("subject") as string,
     message: formData.get("message") as string,
     source: "Contact Page",
+    customUrl: "https://9badee52-4d9c-4d54-813e-38638c4db7ee.neodove.com/integration/custom/05d027a2-97b5-423c-94c6-1a29311fc57e/leads"
   };
 
   try {

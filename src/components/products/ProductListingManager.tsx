@@ -14,14 +14,18 @@ import ProductFilters from "./ProductFilters";
 import Pagination from "../ui/Pagination";
 
 // Types
+type CategoryRef = { val: string; name: string };
 type Product = {
   product_code: string;
   product_type: string;
   product_name: string;
+  category?: CategoryRef;
+  subcategory?: CategoryRef;
   images: string[];
   features: string[];
   technical_features?: string[];
   price?: string;
+  pdf_manual?: string; 
   order?: number;
 };
 
@@ -130,9 +134,17 @@ export default function ProductListingManager({ initialProducts, initialCategori
 
   const matchesCategory = useCallback((product: Product) => {
     if (!filterCat) return true;
+    
+    // 1. Relational Match (Priority)
+    if (product.category) {
+        if (product.category.val === filterCat) return true;
+        if (product.subcategory && product.subcategory.val === filterCat) return true;
+        return false; 
+    }
+
     const type = product.product_type.toLowerCase();
 
-    // 0. Legacy / Special Keys
+    // 2. Legacy / Special Keys (Fallback)
     const legacyKeys = [
         "mdvr", "mdvr-basic", "mdvr-enhanced", "mdvr-ai", 
         "dashcam", "camera", "rfid", "accessories"
@@ -151,7 +163,7 @@ export default function ProductListingManager({ initialProducts, initialCategori
         return false;
     }
     
-    // 1. Dynamic Strict Match
+    // 3. Dynamic String Match
     const allCats = [
         ...categories, 
         ...categories.flatMap(c => c.subcategories || [])
@@ -395,6 +407,23 @@ function CategoryManagerModal({ onClose }: { onClose: () => void }) {
     // Sync when categories load
     useEffect(() => { setLocalCategories(categories); }, [categories]);
 
+    // Add Main Category
+    const addCategory = () => {
+        const name = prompt("Enter new Main Category name:");
+        if (!name) return;
+        const val = name.toLowerCase().replace(/\s+/g, '-');
+        
+        if (localCategories.some(c => c.val === val)) {
+            alert("Category already exists!");
+            return;
+        }
+
+        setLocalCategories(prev => [
+            ...prev,
+            { name, val, href: `/products?category=${val}`, subcategories: [] }
+        ]);
+    };
+
     // Add Subcategory
     const addSubCategory = (parentVal: string) => {
         const name = prompt("Enter subcategory name:");
@@ -411,6 +440,12 @@ function CategoryManagerModal({ onClose }: { onClose: () => void }) {
             }
             return cat;
         }));
+    };
+
+    // Remove Category (Main)
+    const removeCategory = (catVal: string) => {
+        if (!confirm("Delete this Main Category and all its subcategories?")) return;
+        setLocalCategories(prev => prev.filter(c => c.val !== catVal));
     };
 
     // Remove Subcategory
@@ -439,32 +474,49 @@ function CategoryManagerModal({ onClose }: { onClose: () => void }) {
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col">
                 <div className="p-6 border-b flex justify-between items-center bg-gray-50">
                     <h3 className="font-bold text-xl">Manage Categories</h3>
-                    <button onClick={onClose}><X /></button>
+                    <div className="flex gap-2">
+                        <button 
+                            onClick={addCategory}
+                            className="bg-green-600 text-white px-3 py-1.5 rounded-lg font-bold text-sm hover:bg-green-700 flex items-center gap-1"
+                        >
+                            <Plus size={16} /> New Category
+                        </button>
+                        <button onClick={onClose}><X /></button>
+                    </div>
                 </div>
                 
                 <div className="p-6 overflow-y-auto flex-grow space-y-4">
                     {localCategories.map(cat => (
-                        <div key={cat.val} className="border rounded-lg p-4">
-                            <div className="flex justify-between items-center mb-2">
+                        <div key={cat.val} className="border rounded-lg p-4 bg-white shadow-sm">
+                            <div className="flex justify-between items-center mb-2 border-b pb-2">
                                 <span className="font-bold text-lg">{cat.name}</span>
-                                <button 
-                                    onClick={() => addSubCategory(cat.val || '')}
-                                    className="text-sm bg-blue-50 text-blue-600 px-3 py-1 rounded-full font-bold hover:bg-blue-100"
-                                >
-                                    + Add Subcat
-                                </button>
+                                <div className="flex gap-2">
+                                    <button 
+                                        onClick={() => addSubCategory(cat.val || '')}
+                                        className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full font-bold hover:bg-blue-100"
+                                    >
+                                        + Subcat
+                                    </button>
+                                    <button 
+                                        onClick={() => removeCategory(cat.val)}
+                                        className="text-red-500 hover:text-red-700 p-1"
+                                        title="Delete Category"
+                                    >
+                                        <Trash2 size={16} />
+                                    </button>
+                                </div>
                             </div>
                             
                             {cat.subcategories && cat.subcategories.length > 0 ? (
                                 <ul className="space-y-2 ml-4 mt-2">
                                     {cat.subcategories.map(sub => (
-                                        <li key={sub.val} className="flex justify-between items-center bg-gray-50 p-2 rounded">
+                                        <li key={sub.val} className="flex justify-between items-center bg-gray-50 p-2 rounded text-sm">
                                             <span>{sub.name}</span>
                                             <button 
                                                 onClick={() => removeSubCategory(cat.val || '', sub.val || '')}
                                                 className="text-red-500 hover:text-red-700"
                                             >
-                                                <Trash2 size={16} />
+                                                <Trash2 size={14} />
                                             </button>
                                         </li>
                                     ))}
