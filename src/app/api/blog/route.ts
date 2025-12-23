@@ -1,35 +1,65 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import connectDB from '@/lib/db';
+import BlogPost from '@/models/BlogPost';
 
-const blogPath = path.join(process.cwd(), 'src/data/blog-posts.json');
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    const posts = JSON.parse(fs.readFileSync(blogPath, 'utf8'));
-    return NextResponse.json(posts);
-  } catch {
-    return NextResponse.json({ error: 'Failed to load blog posts' }, { status: 500 });
+    await connectDB();
+    // Sort by order first (if set), then date descending
+    const posts = await BlogPost.find().sort({ order: 1, date: -1 }).lean();
+    
+    // Map _id to id for frontend compatibility
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const formatted = posts.map((p: any) => ({
+        ...p,
+        id: p._id.toString(),
+    }));
+
+    return NextResponse.json(formatted);
+  } catch (error) {
+    console.error('Failed to fetch blog posts:', error);
+    return NextResponse.json({ error: 'Failed to fetch posts' }, { status: 500 });
   }
 }
 
 export async function POST(request: NextRequest) {
   try {
+    await connectDB();
     const body = await request.json();
-    // Allow updating either the whole list (reorder) or a single post (add/edit)
-    // For simplicity in this iteration, we'll expect the full list or handle logic if needed.
-    // Let's assume the client sends the FULL list of posts to save (simplest for reordering + editing).
-    
-    // Check if it's a full list update
-    if (Array.isArray(body)) {
-         fs.writeFileSync(blogPath, JSON.stringify(body, null, 2));
-         return NextResponse.json({ success: true, message: 'Blog posts updated successfully' });
+    const { posts } = body;
+
+    if (!posts || !Array.isArray(posts)) {
+        return NextResponse.json({ error: 'Invalid data' }, { status: 400 });
     }
 
-    return NextResponse.json({ error: 'Invalid data format, expected array of posts' }, { status: 400 });
+    // Handle Bulk Update (e.g. reordering or saving edits)
+    // Detailed update: Upsert or Update each
+    for (let i = 0; i < posts.length; i++) {
+        const p = posts[i];
+        // If it has an ID, update it
+        if (p.id || p._id) {
+            await BlogPost.findByIdAndUpdate(p.id || p._id, {
+                title: p.title,
+                slug: p.slug,
+                excerpt: p.excerpt,
+                content: p.content,
+                image: p.image,
+                date: p.date,
+                category: p.category,
+                author: p.author,
+                order: i + 1 // Save new order based on array index
+            });
+        }
+        // Create new is handled via a separate create flow ideally, but we could support it here if no ID
+        // For now assuming existing posts only for reorder/edit
+    }
+
+    return NextResponse.json({ success: true });
 
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: 'Failed to save blog posts' }, { status: 500 });
+    console.error('Failed to save blog posts:', error);
+    return NextResponse.json({ error: 'Failed to save posts' }, { status: 500 });
   }
 }

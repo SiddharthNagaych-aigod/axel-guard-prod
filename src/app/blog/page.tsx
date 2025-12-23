@@ -2,11 +2,29 @@ import Link from "next/link";
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import blogPosts from "@/data/blog-posts.json";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import BlogListingManager from "@/components/blog/BlogListingManager";
+import connectDB from "@/lib/db";
+import BlogPost from "@/models/BlogPost";
+
+export const dynamic = 'force-dynamic';
 
 export default async function BlogPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
+  await connectDB();
+  const rawPosts = await BlogPost.find().sort({ order: 1, date: -1 }).lean();
+  
+  // Transform for client component
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const blogPosts = rawPosts.map((p: any) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { _id, date, createdAt, updatedAt, ...rest } = p;
+      return {
+          ...rest,
+          id: _id.toString(),
+          date: new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+      };
+  });
+
   const { page } = await searchParams;
   const currentPage = Number(page) || 1;
   const POSTS_PER_PAGE = 9;

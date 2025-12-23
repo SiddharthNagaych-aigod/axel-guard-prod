@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import mongoose from 'mongoose';
 
-const DATA_DIR = path.join(process.cwd(), 'src/data');
+const DATA_DIR = path.join(process.cwd(), 'src/data_backup');
 
 async function migrate() {
     // Load environment variables *before* importing modules that use them
@@ -25,6 +25,8 @@ async function migrate() {
     const { default: Product } = await import('../src/models/Product');
     const { default: Client } = await import('../src/models/Client');
     const { default: Service } = await import('../src/models/Service');
+    const { default: BlogPost } = await import('../src/models/BlogPost');
+    const { default: Comment } = await import('../src/models/Comment');
 
     await connectDB();
     console.log('Connected.');
@@ -36,6 +38,8 @@ async function migrate() {
     await Product.deleteMany({});
     await Client.deleteMany({});
     await Service.deleteMany({});
+    await BlogPost.deleteMany({});
+    await Comment.deleteMany({});
 
     // 2. Migrate Categories & Subcategories
     console.log('Migrating Categories...');
@@ -197,6 +201,66 @@ async function migrate() {
         }
         console.log(`Products: ${productsAdded} added, ${productsSkipped} skipped.`);
     }
+
+    // 4. Migrate Blog Posts
+    console.log('Migrating Blog Posts...');
+    let blogPostsData;
+    try {
+         blogPostsData = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'blog-posts.json'), 'utf-8'));
+    } catch {
+        // Fallback or empty
+        blogPostsData = [];
+        console.warn('No blog-posts.json found.');
+    }
+
+    const blogMap: Record<string, any> = {};
+
+    for (const post of blogPostsData) {
+        try {
+            const newPost = await BlogPost.create({
+                slug: post.slug,
+                title: post.title,
+                date: new Date(post.date),
+                author: post.author,
+                category: post.category,
+                content: post.content,
+                excerpt: post.excerpt,
+                image: post.image,
+                originalUrl: post.originalUrl
+            });
+            blogMap[post.slug] = newPost._id;
+        } catch (err) {
+            console.error(`Failed to add blog post ${post.slug}:`, err);
+        }
+    }
+    console.log(`Migrated ${blogPostsData.length} blog posts.`);
+
+    // 5. Migrate Comments
+    console.log('Migrating Comments...');
+    let commentsData;
+    try {
+        commentsData = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'comments.json'), 'utf-8'));
+    } catch {
+        commentsData = [];
+        console.warn('No comments.json found.');
+    }
+
+    let commentsAdded = 0;
+    for (const comment of commentsData) {
+        const postId = blogMap[comment.slug];
+        if (postId) {
+            await Comment.create({
+                post: postId,
+                name: comment.name,
+                content: comment.content,
+                date: new Date(comment.date)
+            });
+            commentsAdded++;
+        } else {
+            console.warn(`Comment skipped: Post slug '${comment.slug}' not found.`);
+        }
+    }
+    console.log(`Migrated ${commentsAdded} comments.`);
 
     console.log('Migration Complete.');
     process.exit(0);

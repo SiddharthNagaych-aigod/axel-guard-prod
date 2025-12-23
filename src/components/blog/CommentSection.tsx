@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useTransition } from 'react';
-import { addComment, Comment } from '@/app/blog/actions';
+import { addComment } from '@/app/blog/actions';
+import type { Comment } from '@/app/blog/actions';
 import { User, MessageSquare, Send } from 'lucide-react';
 
 interface CommentSectionProps {

@@ -1,14 +1,13 @@
 'use server';
 
-import { promises as fs } from 'fs';
-import path from 'path';
 import { revalidatePath } from 'next/cache';
-
-const COMMENTS_FILE = path.join(process.cwd(), 'src/data/comments.json');
+import connectDB from '@/lib/db';
+import BlogPost from '@/models/BlogPost';
+import Comment from '@/models/Comment';
 
 export interface Comment {
   id: string;
-  slug: string;
+  slug: string; // We keep slug in interface for compat, but backend uses relationship
   name: string;
   content: string;
   date: string;
@@ -16,11 +15,23 @@ export interface Comment {
 
 export async function getComments(slug: string): Promise<Comment[]> {
   try {
-    const data = await fs.readFile(COMMENTS_FILE, 'utf-8');
-    const comments: Comment[] = JSON.parse(data);
-    return comments.filter((c) => c.slug === slug).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  } catch {
-    // If file doesn't exist or is empty, return empty array
+    await connectDB();
+    // Find post first to get ID
+    const post = await BlogPost.findOne({ slug });
+    if (!post) return [];
+
+    const comments = await Comment.find({ post: post._id }).sort({ date: -1 }).lean();
+    
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return comments.map((c: any) => ({
+        id: c._id.toString(),
+        slug: slug,
+        name: c.name,
+        content: c.content,
+        date: c.date.toISOString(),
+    }));
+  } catch (error) {
+    console.error("Error fetching comments:", error);
     return [];
   }
 }
@@ -34,25 +45,19 @@ export async function addComment(formData: FormData) {
     return { success: false, message: 'All fields are required' };
   }
 
-  const newComment: Comment = {
-    id: Date.now().toString(),
-    slug,
-    name,
-    content,
-    date: new Date().toISOString(),
-  };
-
   try {
-    let comments: Comment[] = [];
-    try {
-      const data = await fs.readFile(COMMENTS_FILE, 'utf-8');
-      comments = JSON.parse(data);
-    } catch {
-      // File missing, start empty
+    await connectDB();
+    const post = await BlogPost.findOne({ slug });
+    if (!post) {
+         return { success: false, message: 'Post not found' };
     }
 
-    comments.push(newComment);
-    await fs.writeFile(COMMENTS_FILE, JSON.stringify(comments, null, 2));
+    await Comment.create({
+        post: post._id,
+        name,
+        content,
+        date: new Date()
+    });
     
     revalidatePath(`/blog/${slug}`);
     return { success: true };
