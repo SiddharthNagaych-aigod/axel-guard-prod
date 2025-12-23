@@ -52,8 +52,8 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
   }
 
   // Convert _id to string and remove mongoose specific fields that might cause serialization issues
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { _id, date, createdAt: _createdAt, updatedAt: _updatedAt, ...rest } = rawPost as any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+  const { _id, date, createdAt, updatedAt, ...rest } = rawPost as any;
   
   const post = {
       ...rest,
