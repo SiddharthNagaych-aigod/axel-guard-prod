@@ -1,9 +1,8 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import Hero from "@/components/layout/Hero";
 import Link from "next/link";
 import Image from "next/image";
-import { Download, ExternalLink } from "lucide-react";
+import { Download } from "lucide-react";
 
 export const dynamic = 'force-dynamic';
 
