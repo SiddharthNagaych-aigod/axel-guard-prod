@@ -103,6 +103,7 @@ export default function Header() {
 
           <Link href="/services" className="text-white hover:text-gray-300 font-bold transition-colors">Services</Link>
           <Link href="/blog" className="text-white hover:text-gray-300 font-bold transition-colors">Blog</Link>
+          <Link href="/softwares" className="text-white hover:text-gray-300 font-bold transition-colors">Softwares</Link>
           
 
 
@@ -169,6 +170,7 @@ export default function Header() {
 
           <Link href="/services" className="text-xl font-bold text-white hover:text-gray-300" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
           <Link href="/blog" className="text-xl font-bold text-white hover:text-gray-300" onClick={() => setIsMobileMenuOpen(false)}>Blog</Link>
+          <Link href="/softwares" className="text-xl font-bold text-white hover:text-gray-300" onClick={() => setIsMobileMenuOpen(false)}>Softwares</Link>
           <Link href="/contact" className="text-xl font-bold text-white hover:text-gray-300" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
           
 
