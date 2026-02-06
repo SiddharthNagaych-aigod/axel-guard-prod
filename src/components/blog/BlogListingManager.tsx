@@ -148,7 +148,7 @@ export default function BlogListingManager({ initialPosts }: { initialPosts: Blo
       await fetch('/api/blog', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ posts: [newPost, ...posts] })
+        body: JSON.stringify({ posts: newPosts })
         // Send ALL including new one. The new one has no ID, so backend will create it.
         // Existing ones have IDs, so backend will update them (reorder).
       });
