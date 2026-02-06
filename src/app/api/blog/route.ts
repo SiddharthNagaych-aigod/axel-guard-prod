@@ -35,25 +35,28 @@ export async function POST(request: NextRequest) {
     }
 
     // Handle Bulk Update (e.g. reordering or saving edits)
-    // Detailed update: Upsert or Update each
     for (let i = 0; i < posts.length; i++) {
         const p = posts[i];
+        
+        const postData = {
+          title: p.title,
+          slug: p.slug,
+          excerpt: p.excerpt,
+          content: p.content,
+          image: p.image,
+          date: p.date,
+          category: p.category,
+          author: p.author,
+          order: i + 1 // Save new order based on array index
+        };
+
         // If it has an ID, update it
         if (p.id || p._id) {
-            await BlogPost.findByIdAndUpdate(p.id || p._id, {
-                title: p.title,
-                slug: p.slug,
-                excerpt: p.excerpt,
-                content: p.content,
-                image: p.image,
-                date: p.date,
-                category: p.category,
-                author: p.author,
-                order: i + 1 // Save new order based on array index
-            });
+            await BlogPost.findByIdAndUpdate(p.id || p._id, postData);
+        } else {
+            // Create new post
+            await BlogPost.create(postData);
         }
-        // Create new is handled via a separate create flow ideally, but we could support it here if no ID
-        // For now assuming existing posts only for reorder/edit
     }
 
     return NextResponse.json({ success: true });
@@ -61,5 +64,24 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Failed to save blog posts:', error);
     return NextResponse.json({ error: 'Failed to save posts' }, { status: 500 });
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+    await connectDB();
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json({ error: 'ID is required' }, { status: 400 });
+    }
+
+    await BlogPost.findByIdAndDelete(id);
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Failed to delete blog post:', error);
+    return NextResponse.json({ error: 'Failed to delete post' }, { status: 500 });
   }
 }
