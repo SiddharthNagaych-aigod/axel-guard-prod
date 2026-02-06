@@ -131,7 +131,7 @@ export default function BlogListingManager({ initialPosts }: { initialPosts: Blo
       slug,
       title,
       date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
-      image: '',
+      image: '/assets/img/blog-placeholder.jpg', // Placeholder to satisfy validation
       excerpt: 'New blog post excerpt...',
       content: '<p>Start writing your post here...</p>',
       category: 'Uncategorized',
