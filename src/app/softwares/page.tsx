@@ -9,15 +9,15 @@ export const dynamic = 'force-dynamic';
 export default function SoftwaresPage() {
   const softwares = [
     {
-      name: "CMSV6",
+      name: "CMSV6 ONLINE",
       description: "Advanced vehicle tracking and fleet management solution.",
       href: "https://drive.google.com/file/d/1Tnpgf4sptsVaVf_XR_5CaRBlW1oHlv49/view?usp=drive_link",
       image: "/softwares/cmsv6.png",
     },
     {
-      name: "CMSV6 (Alternative)",
+      name: "MDVR SIMBA PLAYER OFFLINE",
       description: "Additional resource or alternative download link.",
-      href: "https://drive.google.com/file/d/1Tnpgf4sptsVaVf_XR_5CaRBlW1oHlv49/view?usp=drive_link",
+      href: "https://drive.google.com/file/d/1-yP3DzJ3FcFGs8kFA8zqc9FCe4E7alvi/view?usp=sharing",
       image: "/softwares/generic.png",
     },
     {
@@ -44,7 +44,7 @@ export default function SoftwaresPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {softwares.map((software, index) => (
-              <div 
+              <div
                 key={index}
                 className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2"
               >
@@ -57,7 +57,7 @@ export default function SoftwaresPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 </div>
-                
+
                 <div className="p-6">
                   <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-400 transition-colors">
                     {software.name}
@@ -65,8 +65,8 @@ export default function SoftwaresPage() {
                   <p className="text-gray-400 mb-6 min-h-[3rem]">
                     {software.description}
                   </p>
-                  
-                  <Link 
+
+                  <Link
                     href={software.href}
                     target="_blank"
                     rel="noopener noreferrer"
